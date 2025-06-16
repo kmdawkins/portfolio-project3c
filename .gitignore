@@ -46,3 +46,6 @@ data/*.json
 
 # Sandbox experiments
 sandbox/
+
+# Project-specific markdown / notes
+developer_notes.md
