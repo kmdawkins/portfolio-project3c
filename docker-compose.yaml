@@ -1,0 +1,99 @@
+version: '3.9'
+
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: p3c_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - p3c_net
+
+  airflow-webserver:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.airflow
+    image: p3c_airflow:2.8.1
+    container_name: p3c_airflow_web
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW__CORE__FERNET_KEY}
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./etl_pipeline:/opt/airflow/etl_pipeline
+      - ./include:/opt/airflow/include
+      - ./logs:/opt/airflow/logs
+    ports:
+      - "8080:8080"
+    command: webserver
+    networks:
+      - p3c_net
+
+  airflow-scheduler:
+    image: p3c_airflow:2.8.1
+    container_name: p3c_airflow_scheduler
+    restart: always
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./etl_pipeline:/opt/airflow/etl_pipeline
+      - ./include:/opt/airflow/include
+      - ./logs:/opt/airflow/logs
+    command: scheduler
+    networks:
+      - p3c_net
+
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-postgres:1.7.13
+    container_name: p3c_dbt
+    volumes:
+      - ./dbt:/usr/app/dbt
+      - ~/.dbt:/root/.dbt  # 👈 Best for local secrets (optional override with AWS Secrets Manager)
+    working_dir: /usr/app/dbt
+    environment:
+      DBT_PROFILES_DIR: /root/.dbt
+    networks:
+      - p3c_net
+
+  s3-mock:
+    image: adobe/s3mock:latest
+    container_name: p3c_s3_mock
+    ports:
+      - "9090:9090"
+    environment:
+      - initialBuckets=p3c-bucket
+    networks:
+      - p3c_net
+
+  # Optional: Add Snowflake CLI container if needed
+  # snowcli:
+  #   image: ghcr.io/snowflakedb/snowcli:latest
+  #   container_name: p3c_snowcli
+  #   volumes:
+  #     - ./snowflake:/usr/app/snowflake
+  #   networks:
+  #     - p3c_net
+
+volumes:
+  postgres_data:
+
+networks:
+  p3c_net:
+    driver: bridge
