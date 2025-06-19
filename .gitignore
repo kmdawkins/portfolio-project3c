@@ -14,6 +14,7 @@ ENV/
 # Environment variables / secrets
 .env
 .env.*
+.envrc
 
 # IDE / Editor settings
 .vscode/
@@ -26,13 +27,28 @@ Thumbs.db
 # Jupyter / notebook outputs
 *.ipynb_checkpoints
 
-# Airflow logs
-logs/
+# Pytest cache
+.pytest_cache/
+.cache/
 
-# dbt artifacts
+# Airflow logs and config files
+logs/
+airflow.db
+unittests.cfg
+airflow.cfg
+
+# Docker volumes & build cache
+**/__pycache__/
+**/.mypy_cache/
+**/.pytest_cache/
+.docker/
+docker-compose.override.yml
+
+# dbt artifacts & user profiles
 dbt/target/
 dbt/dbt_modules/
 dbt/logs/
+dbt/.dbt/
 
 # Snowflake local credential files (if any)
 *.p12
@@ -49,3 +65,7 @@ sandbox/
 
 # Project-specific markdown / notes
 developer_notes.md
+
+# Diagram exports (optional if files are >5MB)
+diagrams/*.png
+diagrams/*.gif
