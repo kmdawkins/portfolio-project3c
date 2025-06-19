@@ -56,9 +56,12 @@ dbt/.dbt/
 *.key
 
 # Dataset files (if generated locally)
-data/*.csv
-data/*.parquet
-data/*.json
+include/**/*.csv
+include/**/*.parquet
+include/**/*.json
+
+# 👉 Exclude large CSV file from Git tracking (pmo)
+include/raw/pmo.csv
 
 # Sandbox experiments
 sandbox/
