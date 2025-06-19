@@ -1,0 +1,58 @@
+# -------------------------------
+# Python build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# Environment files & secrets
+.env
+.env.*
+*.key
+*.pem
+*.p12
+
+# Logs & OS files
+logs/
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+
+# Airflow-specific
+airflow.db
+airflow-webserver.pid
+airflow-scheduler.pid
+*.airflow-backup
+
+# dbt build artifacts
+dbt/target/
+dbt/dbt_modules/
+dbt/logs/
+
+# Local data outputs (avoid copying large/raw data)
+data/*.csv
+data/*.json
+data/*.parquet
+
+# Notebooks (optional)
+*.ipynb
+*.ipynb_checkpoints/
+
+# Sandbox/experiments
+sandbox/
+
+# Git
+.git
+.gitignore
