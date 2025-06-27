@@ -52,11 +52,30 @@ Sensitive credentials (Snowflake, AWS, dbt profiles) are stored in local `.env` 
 
 |Stage|Color| Description |Epics |
 |-----|-----|-------|------------|
-|Setup| 🟨 Yellow|Tooling, Git, Secrets, Project Scaffolding|`P3C-1`, `P3C-2`,`P3C-36`,`P3C-7`|
-|Modeling| 🟩 Green |Ingestion & Transformation | `P3C-3`,`P3C-4` |
-|Testing| 🟦 Blue |Data Quality, dbt Tests |`P3C-5` |
-|Orchestration| 🟧 Orange |Airflow DAGs, Logging| `P3C-6` |
-|Final Review| 🟪 Purple |Documentation, Screenshots, Acceptance| `P3C-8`|
+|**Setup**| 🟨 Yellow|Tooling, Git, Secrets, Project Scaffolding|`P3C-1`, `P3C-2`,`P3C-36`,`P3C-7`|
+|**Modeling**| 🟩 Green |Ingestion & Transformation | `P3C-3`,`P3C-4` |
+|**Testing**| 🟦 Blue |Data Quality, dbt Tests |`P3C-5` |
+|**Orchestration**| 🟧 Orange |Airflow DAGs, Logging| `P3C-6` |
+|**Final Review**| 🟪 Purple |Documentation, Screenshots, Acceptance| `P3C-8`|
+
+---
+
+## Label Reference Table
+|Label|Description|
+|-----|-----------|
+|`setup`|Initial environment, tooling, scaffolding, and repo configuration tasks|
+|`data-staging`|Loading, cleaning, or structuring raw data into staging tables|
+|`transformation`|Any dbt or SQL logic that reshapes or enriches data|
+|`data-validation`|Manual or automated checks to verify data integrity|
+|`testing`|Pytest, dbt tests, or debug-related activities|
+|`docs`|README updates, screenshots, architecture diagrams, or inline documentation|
+|`dbt`|Task related to dbt models, congigs, tests, or docs|
+|`snowflake`|Tasks involving Snowflake setup, configs, schema, or access|
+|`airflow`|DAGs, logging, scheduling, or Airflow UI setup|
+|`portfolio-deliverable`|Tasks contributing to README, screenshots, or final documentation|
+|`core-feature`|Tasks required for MVP of the pipeline|
+|`blocked`| Tasks cannot proceed without external/unresolved input|
+|`ready-for-review`|Task is complete and needs review or final signoff|
 
 ---
 
