@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 from etl_pipeline.utils.validation import validate_columns_exist
 
 
