@@ -50,6 +50,14 @@ Sensitive credentials (Snowflake, AWS, dbt profiles) are stored in local `.env` 
 - dbt model lineage screenshots
 - Airflow DAG graph screenshots
 
+|Stage|Color| Description |Epics |
+|-----|-----|-------|------------|
+|Setup| 🟨 Yellow|Tooling, Git, Secrets, Project Scaffolding|`P3C-1`, `P3C-2`,`P3C-36`,`P3C-7`|
+|Modeling| 🟩 Green |Ingestion & Transformation | `P3C-3`,`P3C-4` |
+|Testing| 🟦 Blue |Data Quality, dbt Tests |`P3C-5` |
+|Orchestration| 🟧 Orange |Airflow DAGs, Logging| `P3C-6` |
+|Final Review| 🟪 Purple |Documentation, Screenshots, Acceptance| `P3C-8`|
+
 ---
 
 ## 📝 Developer Notes
