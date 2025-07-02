@@ -17,9 +17,11 @@ Used to record major changes in ticket such as: status changes (blocked), scope,
 |📝 Note  | Updated          |
 
 
-|Date             | Jira ID | Summary                                               | Action Take (Git/Notes)                         | Status     |
-|-----------------|---------|-------------------------------------------------------|-------------------------------------------------|------------|
-|2025-06-28       | P3C-35  | Install dbt CLI locally                               | Blocked due to `venv` conflict; subtask created | 🟥 Blocked |
+|Date             | Jira ID | Summary                                               | Action Taken (Git/Notes)                         | Status         |
+|-----------------|---------|-------------------------------------------------------|-------------------------------------------------|-----------------|
+|2025-07-02       | P3C-43  | Create clean virtual environment for `dbt-snowflake`  | Subtask created to **unblock** P3C-35           | 🟨 In Progress  |
+|2025-06-28       | P3C-35  | Install dbt CLI locally                               | Blocked due to `venv` conflict; subtask created | 🟥 Blocked      |
+
 
 
 ## Update Protocol
@@ -29,7 +31,7 @@ Used to record major changes in ticket such as: status changes (blocked), scope,
 - When a new **subtask** is created due to a block or scope split
 - After signigicant **README or docs alignment**
 
-- **Where to link**
+**Where to link**
 - Sreenshots: `docs\screenshots\portfolio-deliverables\`
 - Git commits: Semantic messages tracked in `git log`
 - Markdown updates: Mention location if relevant
