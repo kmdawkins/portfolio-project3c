@@ -11,6 +11,12 @@ venv/
 ENV/
 *.egg-info/
 
+# Local virtual environments outside repo (e.g., C:\venvs)
+.venvs/
+venvs/
+dbt_snowflake/
+etl_env/
+
 # Environment variables / secrets
 .env
 .env.*
@@ -38,9 +44,6 @@ unittests.cfg
 airflow.cfg
 
 # Docker volumes & build cache
-**/__pycache__/
-**/.mypy_cache/
-**/.pytest_cache/
 .docker/
 docker-compose.override.yml
 
@@ -49,6 +52,8 @@ dbt/target/
 dbt/dbt_modules/
 dbt/logs/
 dbt/.dbt/
+dbt/manifest.json
+dbt/run_results.json
 
 # Snowflake local credential files (if any)
 *.p12
@@ -70,5 +75,5 @@ sandbox/
 developer_notes.md
 
 # Diagram exports (optional if files are >5MB)
-diagrams/*.png
-diagrams/*.gif
+diagrams/**/*.png
+diagrams/**/*.gif
