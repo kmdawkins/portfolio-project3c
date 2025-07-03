@@ -17,10 +17,11 @@ Used to record major changes in ticket such as: status changes (blocked), scope,
 |📝 Note  | Updated          |
 
 
-|Date             | Jira ID | Summary                                               | Action Taken (Git/Notes)                         | Status         |
-|-----------------|---------|-------------------------------------------------------|-------------------------------------------------|-----------------|
-|2025-07-02       | P3C-43  | Create clean virtual environment for `dbt-snowflake`  | Subtask created to **unblock** P3C-35           | 🟨 In Progress  |
-|2025-06-28       | P3C-35  | Install dbt CLI locally                               | Blocked due to `venv` conflict; subtask created | 🟥 Blocked      |
+|Date             | Jira ID | Summary                                               | Action Taken (Git/Notes)                         | Status                                 |
+|-----------------|---------|-------------------------------------------------------|-------------------------------------------------|-----------------------------------------|
+|2025-07-03       | P3C-35  | Install dbt CLI locally                               | Unblocked by **P3C-43**; Proceeding with `pip install dbt-snowflake`        | 🟨 In Progress |              
+|2025-07-02       | P3C-43  | Create clean virtual environment for `dbt-snowflake`  | Subtask completed; `venv` created, activated, and committed `.gitignore`  | 🟩 Done        |
+|2025-06-28       | P3C-35  | Install dbt CLI locally                               | Blocked due to `venv` conflict; subtask **P3C-43** created                         | 🟥 Blocked     |
 
 
 
