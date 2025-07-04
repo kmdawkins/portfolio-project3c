@@ -84,6 +84,8 @@ All visuals, diagrams, and outputs are stored in:
 | Label               | Description                                                 |
 |---------------------|-------------------------------------------------------------|
 | `setup`             | Project scaffolding, secrets, repo config                   |
+| `env`               | Tasks that involve managing `.env`, `.env.template`, or environment-specific variables |
+| `secrets`           | Any sensitive credential configuration (Snowflake, AWS, dbt profiles) |
 | `data-staging`      | Loading and preparing raw data                              |
 | `transformation`    | dbt model development and enrichment                        |
 | `data-validation`   | Schema checks, NULL filters, uniqueness                     |
