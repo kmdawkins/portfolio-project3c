@@ -31,7 +31,7 @@ See full chronological log below ⬇️
 
 | Date        | Jira ID | Summary                                                  | Action Taken (Git/Notes)                                                                      | Status         |
 |-------------|---------|----------------------------------------------------------|-----------------------------------------------------------------------------------------------|----------------|
-| 2025-06-28  | P3C-35  | Install dbt CLI locally                                  | Blocked due to `venv` conflict; subtask **P3C-43** created                                    | 🟥 Blocked     |
+| 2025-06-28  | P3C-35  | Install dbt CLI locally                                  | **Blocked** due to `venv` conflict; subtask **P3C-43** created                                | 🟥 Blocked     |
 | 2025-07-02  | P3C-43  | Create clean virtual environment for `dbt-snowflake`     | Subtask completed; `venv` created, activated, and committed `.gitignore`                      | 🟩 Done        |
 | 2025-07-03  | P3C-35  | Install dbt CLI locally                                  | Unblocked by **P3C-43**; proceeded with `pip install dbt-snowflake`                           | 🟨 In Progress |
 | 2025-07-03  | P3C-35  | Install dbt CLI locally                                  | Installed dbt-snowflake in `dbt_snowflake` venv; verified versions                            | 🟩 Done        |
@@ -40,6 +40,10 @@ See full chronological log below ⬇️
 | 2025-07-04  | P3C-45  | Capture dbt_snowflake venv setup and Git CLI screenshots | Saved visuals for deactivate/activate flow, `dbt --version`, commit/push to GitHub            | 🟩 Done        |
 | 2025-07-04  | P3C-46  | Update Label Reference Table in `README.md`              | Added new `env` and `secrets` labels; committed changes to repository                         | 🟩 Done        |
 | 2025-07-04  | P3C-29  | Duplicate subtask merged into **P3C-37**                 | Implementation completed under **P3C-37** context; no further action needed                   | 🟩 Done        |
+| 2025-07-06  | P3C-47  | Create foundational Snowflake objects (Database, Schema, Warehouse)| **Blocked** due to missing `snowsql` CLI install; subtask **P3C-48** created        | 🟥 Blocked     |
+| 2025-07-06  | P3C-48  | Install and configure `snowsql` CLI                      | Subtask **P3C-48** created to install `snowsql` CLI and unblock **P3C-47**                    | 🟨 In Progress |
+| 2025-07-06  | P3C-48  | Install and configure `snowsql` CLI                      | Installed `snowsql` CLI; verified install and version (1.4.2)                                 | 🟩 Done        |
+| 2025-07-06  | P3C-47  | Create foundational Snowflake objects (Database, Schema, Warehouse)| Unblocked by *P3C-48**; proceed with snowflake object creation                      | 🟨 In Progress | 
 
 ---
 
