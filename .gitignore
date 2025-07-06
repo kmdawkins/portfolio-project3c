@@ -60,6 +60,15 @@ dbt/run_results.json
 *.pem
 *.key
 
+# SnowSQL CLI config and session files
+.snowsql/
+
+# CLI log output
+*.log
+
+# Shell/CLI history files (if manually saved)
+*.history
+
 # Dataset files (if generated locally)
 include/**/*.csv
 include/**/*.parquet
