@@ -6,10 +6,16 @@ Used to record major changes in ticket such as: status updates (blocked), scope,
 ---
 
 ## 🔎 Latest Activity  
-🗓️ **2025-07-04**  
-- ✅ **P3C-29** merged into P3C-37 to reduce redundancy  
-- ✅ **P3C-46** committed: label reference table updated in `README.md`  
-- ✅ **P3C-45**: dbt_snowflake virtual environment setup screenshots captured and committed
+🗓️ **2025-07-06**  
+### Development
+- ✅ Installed `snowsql` CLI (v1.4.2) for Snowflake object creation
+
+### Visual Assets
+- ✅ Screenshot: `snowflake-snowsql-cli-install-success.png` committed
+
+### Jira Updates
+- ✅ P3C-47 Unblocked
+- ✅ P3C-48 Marked Done
 
 See full chronological log below ⬇️
 
@@ -43,7 +49,7 @@ See full chronological log below ⬇️
 | 2025-07-06  | P3C-47  | Create foundational Snowflake objects (Database, Schema, Warehouse)| **Blocked** due to missing `snowsql` CLI install; subtask **P3C-48** created        | 🟥 Blocked     |
 | 2025-07-06  | P3C-48  | Install and configure `snowsql` CLI                      | Subtask **P3C-48** created to install `snowsql` CLI and unblock **P3C-47**                    | 🟨 In Progress |
 | 2025-07-06  | P3C-48  | Install and configure `snowsql` CLI                      | Installed `snowsql` CLI; verified install and version (1.4.2)                                 | 🟩 Done        |
-| 2025-07-06  | P3C-47  | Create foundational Snowflake objects (Database, Schema, Warehouse)| Unblocked by *P3C-48**; proceed with snowflake object creation                      | 🟨 In Progress | 
+| 2025-07-06  | P3C-47  | Create foundational Snowflake objects (Database, Schema, Warehouse)| Unblocked by **P3C-48**; proceed with snowflake object creation                      | 🟨 In Progress | 
 
 ---
 
