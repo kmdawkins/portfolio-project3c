@@ -6,16 +6,18 @@ Used to record major changes in ticket such as: status updates (blocked), scope,
 ---
 
 ## 🔎 Latest Activity  
-🗓️ **2025-07-06**  
+🗓️ **2025-07-07**  
 ### Development
-- ✅ Installed `snowsql` CLI (v1.4.2) for Snowflake object creation
+- ✅ Successful first `snowsql` CLI (v1.4.2) login and Snowflake object creation (database, schema, warehouse)
 
 ### Visual Assets
-- ✅ Screenshot: `snowflake-snowsql-cli-install-success.png` committed
+- ✅ Screenshot: `snowflake-object-setup-success` committed
+- ✅ Screenshot: `snowflake-snowsql-create-database-success` committed
+- ✅ Screenshot: `snowflake-snowsql-create-schema-success` committed
+- ✅ Screenshot: `snowflake-snowsql-create-warehouse-success` committed
 
 ### Jira Updates
-- ✅ P3C-47 Unblocked
-- ✅ P3C-48 Marked Done
+- ✅ P3C-47 Marked Done
 
 See full chronological log below ⬇️
 
@@ -49,8 +51,8 @@ See full chronological log below ⬇️
 | 2025-07-06  | P3C-47  | Create foundational Snowflake objects (Database, Schema, Warehouse)| **Blocked** due to missing `snowsql` CLI install; subtask **P3C-48** created        | 🟥 Blocked     |
 | 2025-07-06  | P3C-48  | Install and configure `snowsql` CLI                      | Subtask **P3C-48** created to install `snowsql` CLI and unblock **P3C-47**                    | 🟨 In Progress |
 | 2025-07-06  | P3C-48  | Install and configure `snowsql` CLI                      | Installed `snowsql` CLI; verified install and version (1.4.2)                                 | 🟩 Done        |
-| 2025-07-06  | P3C-47  | Create foundational Snowflake objects (Database, Schema, Warehouse)| Unblocked by **P3C-48**; proceed with snowflake object creation                      | 🟨 In Progress | 
-
+| 2025-07-06  | P3C-47  | Create foundational Snowflake objects (Database, Schema, Warehouse)| Unblocked by **P3C-48**; proceed with snowflake object creation                     | 🟨 In Progress | 
+| 2025-07-06  | P3C-47  | Create foundational Snowflake objects (Database, Schema, Warehouse)| Created snowflake objects (database, schema, warehouse)                             | 🟩 Done        | 
 ---
 
 ## Update Protocol
