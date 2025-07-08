@@ -6,22 +6,19 @@ Used to record major changes in ticket such as: status updates (blocked), scope,
 ---
 
 ## 🔎 Latest Activity  
-🗓️ **2025-07-07**  
+🗓️ **2025-07-08**  
 ### Development
-- ✅ First successful `snowsql` CLI login (v1.4.2) login and Snowflake object creation (database, schema, warehouse)
-- ✅ `dbt debug` successful: verified Snowflake dbt integration and adapter version (1.9.4)
+- ✅ **P3C-38**: `dbt_project.yml` scaffolded with project metadata, profile, and clean targets
+- ✅ `.gitkeep` placeholder files added to all `dbt/models/` subfolders
 
 ### Visual Assets
-- ✅ Screenshot: `snowflake-object-setup-success` committed
-- ✅ Screenshot: `snowflake-snowsql-create-database-success` committed
-- ✅ Screenshot: `snowflake-snowsql-create-schema-success` committed
-- ✅ Screenshot: `snowflake-snowsql-create-warehouse-success` committed
-- ✅ Screenshot: `dbt-debug-snowsql-snowflake-all-checks-passed` committed
-- ✅ Screenshot: `dbt-debug-snowsql-snowflake-connection-verified` committed
+- ✅ Screenshot: `2025-07-08-dbt-model-folder-structure-gitkeep.png` committed
 
 ### Jira Updates
-- ✅ P3C-47 Marked Done
-- ✅ P3C-37 Marked Done (Snowflake confirmed via `dbt debug`)
+- ✅ P3C-28 marked done
+- ✅ P3C-39 marked done
+- ✅ P3C-40 merged with **P3C-39**
+- ✅ P3C-38 marked done
 
 
 See full chronological log below ⬇️
@@ -62,7 +59,8 @@ See full chronological log below ⬇️
 | 2025-07-07  | P3C-37  | Configure Snowflake credentials in `.env` and confirm integration | Connection test passed via `dbt debug`; screenshots captured and committed           | 🟩 Done        |
 | 2025-07-08  | P3C-28  | Add `.env` to `.gitignore`                               | Updated description, AC, and labels to reflect GitHub history (completed 2025-06-10)          | 🟩 Done        |
 | 2025-07-08  | P3C-40  | Test dbt connection to Snowflake                         | Merged into **P3C-39** to consolidate connection test with `profiles.yml` setup               | 🟪 Merge       |
-| 2025-07/08  | P3C-39  | Configure `profiles.yml` for Snowflake + validate debug  | Updated summary + description to reflect both setup and connection validation                 | 🟩 Done        | 
+| 2025-07-08  | P3C-39  | Configure `profiles.yml` for Snowflake + validate debug  | Updated summary + description to reflect both setup and connection validation                 | 🟩 Done        |
+| 2025-07-08  | P3C-38  | Initialize dbt project folder and scaffold dbt_project.yml | Customize `dbt_project.yml` to match Project 3C conventions                                 | 🟩 Done        |
 ---
 
 ## Update Protocol
