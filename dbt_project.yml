@@ -1,0 +1,10 @@
+name: project3c
+version: '1.0'
+
+profile: project3c_profile
+
+model-paths: ["dbt/models"]
+target-path: "dbt/target"
+clean-targets:
+  - "dbt/target"
+  - "dbt/dbt_modules"
