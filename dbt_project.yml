@@ -5,8 +5,22 @@ config-version: 2
 profile: project3c_profile
 description: "Project 3C — Modular dbt setup targeting Snowflake"
 
+require-dbt-version: [">=1.10.0", "<2.0.0"]
+
 model-paths: ["dbt/models"]
-# target-path: "dbt/target" Deprecated
+
 clean-targets:
   - "dbt/target"
   - "dbt/dbt_modules"
+
+# Recommended: Set default materializations by layer
+models:
+  project3c:
+    raw:
+      materialized: view
+    staging:
+      materialized: view
+    intermediate:
+      materialized: ephemeral
+    final:
+      materialized: table
