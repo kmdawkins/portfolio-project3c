@@ -58,7 +58,8 @@ See full chronological log below ⬇️
 | 2025-07-06  | P3C-48  | Install and configure `snowsql` CLI                      | Installed `snowsql` CLI; verified install and version (1.4.2)                                 | 🟩 Done        |
 | 2025-07-06  | P3C-47  | Create foundational Snowflake objects (Database, Schema, Warehouse)| Unblocked by **P3C-48**; proceed with snowflake object creation                     | 🟨 In Progress | 
 | 2025-07-06  | P3C-47  | Create foundational Snowflake objects (Database, Schema, Warehouse)| Created snowflake objects (database, schema, warehouse)                             | 🟩 Done        |
-| 2025-07-07  | P3C-37  | Configure Snowflake credentials in `.env` and confirm integration | Connection test passed via `dbt debug`; screenshots captured and committed           | 🟩 Done        | 
+| 2025-07-07  | P3C-37  | Configure Snowflake credentials in `.env` and confirm integration | Connection test passed via `dbt debug`; screenshots captured and committed           | 🟩 Done        |
+| 2025-07-08  | P3C-28  | Add `.env` to `.gitignore`                               | Updated description, AC, and labels to reflect GitHub history (completed 2025-06-10)          | 🟩 Done        | 
 ---
 
 ## Update Protocol
