@@ -1,10 +1,12 @@
 name: project3c
 version: '1.0'
+config-version: 2
 
 profile: project3c_profile
+description: "Project 3C — Modular dbt setup targeting Snowflake"
 
 model-paths: ["dbt/models"]
-target-path: "dbt/target"
+# target-path: "dbt/target" Deprecated
 clean-targets:
   - "dbt/target"
   - "dbt/dbt_modules"
