@@ -61,6 +61,7 @@ See full chronological log below ⬇️
 | 2025-07-08  | P3C-40  | Test dbt connection to Snowflake                         | Merged into **P3C-39** to consolidate connection test with `profiles.yml` setup               | 🟪 Merge       |
 | 2025-07-08  | P3C-39  | Configure `profiles.yml` for Snowflake + validate debug  | Updated summary + description to reflect both setup and connection validation                 | 🟩 Done        |
 | 2025-07-08  | P3C-38  | Initialize dbt project folder and scaffold dbt_project.yml | Customize `dbt_project.yml` to match Project 3C conventions                                 | 🟩 Done        |
+| 2025-07-08  | P3C-49  | Perform backlog refinement for Epics P3C-3 to P3C-5      | Review subtask summaries, descriptions, ac, labels for completeness, clarity, build logic     | 🟨 In Progress |
 ---
 
 ## Update Protocol
