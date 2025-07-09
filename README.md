@@ -81,23 +81,27 @@ All visuals, diagrams, and outputs are stored in:
 
 ## 🏷️ Label Reference Table
 
-| Label               | Description                                                 |
-|---------------------|-------------------------------------------------------------|
-| `setup`             | Project scaffolding, secrets, repo config                   |
-| `env`               | Tasks that involve managing `.env`, `.env.template`, or environment-specific variables |
-| `secrets`           | Any sensitive credential configuration (Snowflake, AWS, dbt profiles) |
-| `data-staging`      | Loading and preparing raw data                              |
-| `transformation`    | dbt model development and enrichment                        |
-| `data-validation`   | Schema checks, NULL filters, uniqueness                     |
-| `testing`           | dbt tests, unit tests, pytest validation                    |
-| `docs`              | README, screenshots, architecture, developer notes          |
-| `dbt`               | Models, configs, profiles, tests                            |
-| `snowflake`         | Snowflake account, schema, access                           |
-| `airflow`           | DAG design, Airflow UI, task logic                          |
-| `portfolio-deliverable` | Final visuals, CLI screenshots, documentation           |
-| `core-feature`      | Tasks essential for MVP                                     |
-| `blocked`           | Blocked by config, environment, or external decision        |
-| `ready-for-review`  | Complete and staged for documentation                       |
+## 🏷️ Label Reference Table
+
+| Label               | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| `setup`             | Initial scaffolding: Git repo, Docker, dbt, Airflow setup                   |
+| `env`               | Environment variables, `.env`, `.env.template`                              |
+| `secrets`           | Secrets management (Snowflake creds, AWS Secrets Manager, dbt profiles)     |
+| `data-staging`      | Loading and validating raw CSVs or source data                              |
+| `transformation`    | dbt model logic (raw → staging → intermediate → final)                      |
+| `validation`        | Data quality checks, schema assertions, uniqueness, NULL filters            |
+| `testing`           | dbt tests, unit tests, automated validation (e.g., pytest)                  |
+| `docs`              | Project documentation: README, dev notes, diagrams, screenshots             |
+| `dbt`               | dbt-specific: models, configs, profiles, tests, docs                        |
+| `snowflake`         | Snowflake configuration: database, schema, warehouse, integration           |
+| `airflow`           | DAG development, scheduling, task orchestration, UI configuration           |
+| `portfolio`         | Assets and documentation intended for job-seeking presentation              |
+| `core-feature`      | Critical tasks required for MVP end-to-end flow                             |
+| `refinement`        | Backlog grooming, subtask merging, re-sequencing, Jira cleanup              |
+| `blocked`           | Task is blocked due to external dependency, misconfiguration, or timing     |
+| `ready-for-review`  | Complete and staged for documentation or code review                        |
+
 
 ---
 
