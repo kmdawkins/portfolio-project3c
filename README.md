@@ -78,9 +78,6 @@ All visuals, diagrams, and outputs are stored in:
 | **Final Review** | 🟪 Purple | Docs, screenshots, polish            | `P3C-8`                  |
 
 ---
-
-## 🏷️ Label Reference Table
-
 ## 🏷️ Label Reference Table
 
 | Label               | Description                                                                 |
@@ -89,7 +86,9 @@ All visuals, diagrams, and outputs are stored in:
 | `env`               | Environment variables, `.env`, `.env.template`                              |
 | `secrets`           | Secrets management (Snowflake creds, AWS Secrets Manager, dbt profiles)     |
 | `data-staging`      | Loading and validating raw CSVs or source data                              |
-| `transformation`    | dbt model logic (raw → staging → intermediate → final)                      |
+| `modeling`          | dbt model logic across raw → staging → intermediate → final                 |
+| `transformation`    | Data enrichment or restructuring (can overlap with modeling)                |
+| `sql`               | SQL scripts external to dbt (e.g., Snowflake DDLs, load scripts)            |
 | `validation`        | Data quality checks, schema assertions, uniqueness, NULL filters            |
 | `testing`           | dbt tests, unit tests, automated validation (e.g., pytest)                  |
 | `docs`              | Project documentation: README, dev notes, diagrams, screenshots             |
@@ -98,7 +97,8 @@ All visuals, diagrams, and outputs are stored in:
 | `airflow`           | DAG development, scheduling, task orchestration, UI configuration           |
 | `portfolio`         | Assets and documentation intended for job-seeking presentation              |
 | `core-feature`      | Critical tasks required for MVP end-to-end flow                             |
-| `refinement`        | Backlog grooming, subtask merging, re-sequencing, Jira cleanup              |
+| `refinement`        | Backlog refinement, subtask merging, re-sequencing, Jira cleanup            |
+| `sprint-ready`      | Fully scoped, unblocked, and ready for execution in current sprint          |
 | `blocked`           | Task is blocked due to external dependency, misconfiguration, or timing     |
 | `ready-for-review`  | Complete and staged for documentation or code review                        |
 
