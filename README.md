@@ -1,155 +1,183 @@
-# Project 3C: Data Warehouse & Cloud Integration
+# 📦 Project 3C: Data Warehouse & Cloud Integration
 
-This project automates ingestion and transformation of structured data from CSV sources (hosted on S3 or locally) into a **Snowflake data warehouse**. It uses **Apache Airflow** for orchestration, **dbt** for transformation and testing, and **Python** for supporting ETL utilities. The pipeline is modular, secure, and aligned with modern Data Engineering practices.
+A modular, production-aligned data pipeline that automates the ingestion, transformation, and orchestration of structured CSV data into a **Snowflake cloud data warehouse**. It supports both **local and AWS S3** data sources, uses **dbt** for transformations and testing, and **Apache Airflow** for orchestration. Built for clarity, scalability, and security using **modern Data Engineering best practices**.
 
 ---
 
-## 📁 Project Structure (Key Folders)
+## 📁 Project Structure
 
 | Folder         | Purpose                                                  |
 |----------------|----------------------------------------------------------|
 | `dags/`        | Apache Airflow DAG definitions                           |
 | `dbt/`         | dbt project structure, models, and configs               |
-| `diagrams/`    | Pipeline architecture diagrams and lineage screenshots   |
-| `docker/`      | Docker config for future containerization (optional)     |
-| `docs/`        | Jira logs, screenshots, developer notes                  |
+| `diagrams/`    | Pipeline diagrams and dbt lineage screenshots            |
+| `docker/`      | Docker config for containerization (optional)            |
+| `docs/`        | Jira logs, screenshots, developer notes, architecture    |
 | `etl_pipeline/`| Python-based ETL logic, jobs, utils                      |
 | `include/`     | Raw and lookup datasets (`/raw/`, `/lookup/`)           |
-| `logs/`        | Runtime and Airflow logs (git-ignored)                   |
-| `sandbox/`     | Scratch scripts, experiments, and test queries           |
+| `logs/`        | Runtime logs (Airflow and ETL, git-ignored)              |
+| `sandbox/`     | Scratch scripts, test queries, experimentation           |
 | `tests/`       | Unit tests and dbt validation logic                      |
 
 ---
 
-## ⚡ Tech Stack
+## ⚙️ Tech Stack
 
 - **Python 3.11** – Core scripting and ETL support  
-- **Apache Airflow (2.8.1)** – Orchestration  
-- **Snowflake** – Cloud data warehouse  
-- **dbt Core** – SQL-based transformations and testing  
-- **AWS S3** – Cloud object storage (planned integration)  
-- **Git + Jira** – Version control and task tracking  
+- **Apache Airflow 2.8.1** – DAG orchestration and automation  
+- **Snowflake** – Cloud-based data warehouse  
+- **dbt Core** – SQL modeling, testing, documentation  
+- **AWS S3** – Cloud object storage for raw/staging datasets  
+- **AWS Secrets Manager** – Production-grade secrets handling  
+- **Git + Jira** – Version control and structured project tracking  
 
 ---
 
-## 🎯 Objectives
+## 🎯 Project Goals
 
-- ✅ Ingest structured data from AWS S3 or local storage
-- ✅ Load into Snowflake using native connectors (`COPY INTO`, dbt sources)
-- ✅ Transform data via dbt models (staging → core → final)
-- ✅ Orchestrate the full workflow using Apache Airflow
-- ✅ Validate transformations via dbt tests and unit tests
-- ✅ Secure secrets via `.env`, following production patterns
-- ✅ Maintain clean, modular, job-ready Git repo and documentation
+- ✅ Automate ingestion of CSV data from **S3** or local filesystem  
+- ✅ Load into **Snowflake** via Python ETL and/or `COPY INTO`  
+- ✅ Build dbt models to transform raw → staging → final  
+- ✅ Validate using dbt tests and Python unit tests  
+- ✅ Orchestrate full workflow using Apache Airflow DAGs  
+- ✅ Store secrets securely using **AWS Secrets Manager**  
+- ✅ Maintain clean, modular codebase and job-seeking artifacts  
 
 ---
 
 ## 🔐 Secrets Management
 
-Secrets are stored locally in a `.env` file and are **excluded from Git** using `.gitignore`. These include:
+Secrets are managed using environment variables. Two stages supported:
 
-- Snowflake credentials (account, user, password, warehouse, schema)
-- AWS credentials (for S3 integration — optional)
-- dbt profile targets
+1. **Development**:  
+   - Use `.env` (excluded via `.gitignore`) to store credentials.
+   - Includes Snowflake, AWS, and dbt profiles.
 
-✅ For production, secrets should be managed via **AWS Secrets Manager** or **Vault**.
+2. **Production-ready**:  
+   - Uses **AWS Secrets Manager** for secure secrets retrieval.
+   - Integrated into Airflow and Python ETL workflows.
 
 ---
 
 ## 🖼️ Visuals & Documentation
 
-All visuals, diagrams, and outputs are stored in:
+Project documentation and visual outputs are stored in:
 
-- `diagrams/` – Pipeline architecture and dbt lineage screenshots
-- `docs/screenshots/` – Airflow UI, test results, CLI logs, and deliverables
-- `docs/jira_sync_log.md` – Git ↔ Jira sync entries
-- `developer_notes.md` – Lessons, blockers, and implementation notes
+| Folder                    | Contents                                          |
+|---------------------------|---------------------------------------------------|
+| `diagrams/`               | DAG flowcharts, dbt lineage screenshots           |
+| `docs/screenshots/`       | Airflow UI, dbt CLI outputs, S3 console, test logs|
+| `docs/jira_sync_log.md`   | Git ↔ Jira worklog sync                           |
+| `developer_notes.md`      | Design rationale, blockers, lessons learned       |
+| `dag_architecture.md`     | DAG task descriptions and orchestration logic     |
+
+---
+
+## 🏁 Jira Epic Color Mapping
+
+| Stage            | Color   | Description                                     | Epics                      |
+|------------------|---------|-------------------------------------------------|----------------------------|
+| **Setup**        | 🟨 Yellow | Git, scaffolding, secrets, Docker               | `P3C-1`, `P3C-2`, `P3C-36`, `P3C-7`, `P3C-65` |
+| **Ingestion**    | 🟥 Red    | Data sourcing via S3, ingestion into Snowflake  | `P3C-56`                   |
+| **Modeling**     | 🟩 Green  | dbt model logic and transformations             | `P3C-3`, `P3C-4`           |
+| **Testing**      | 🟦 Blue   | dbt tests and validation                        | `P3C-5`                    |
+| **Orchestration**| 🟧 Orange | DAG creation and Airflow task flow              | `P3C-6`                    |
+| **Final Review** | 🟪 Purple | Documentation, polish, GitHub release           | `P3C-8`                    |
 
 ---
 
-## 🏷️ Jira Epic Color Mapping
-
-| Stage            | Color   | Description                         | Epics Included           |
-|------------------|---------|-------------------------------------|--------------------------|
-| **Setup**        | 🟨 Yellow | Git, Secrets, Scaffolding            | `P3C-1`, `P3C-2`, `P3C-36`, `P3C-7` |
-| **Ingestion**    | 🟥 Red   | Data sourcing, integration, and pipelines feeding Snowflake | `P3C-56`         |
-| **Modeling**     | 🟩 Green  | Staging, SQL transformations         | `P3C-3`, `P3C-4`         |
-| **Testing**      | 🟦 Blue   | dbt tests and validation             | `P3C-5`                  |
-| **Orchestration**| 🟧 Orange | DAG development and Airflow logging  | `P3C-6`                  |
-| **Final Review** | 🟪 Purple | Docs, screenshots, polish            | `P3C-8`                  |
-
-
----
 ## 🏷️ Label Reference Table
 
 | Label              | Description                                                              |
-| ------------------ | ------------------------------------------------------------------------ |
-| `setup`            | Initial scaffolding: Git repo, Docker, dbt, Airflow setup                |
-| `env`              | Environment variables, `.env`, `.env.template`                           |
-| `secrets`          | Secrets management (Snowflake creds, AWS Secrets Manager, dbt profiles)  |
-| `cloud`            | Cloud-specific tools, services, or deployments                           |
-| `aws`              | Tasks involving AWS services like S3, IAM, Secrets Manager               |
-| `cli`              | Command-line tools (e.g., AWS CLI, SnowSQL, dbt CLI)                     |
-| `python`           | Python-based ETL scripts, automation, or validation                      |
-| `automation`       | Workflow automation using scripting, DAGs, or orchestration tools        |
-| `data-staging`     | Loading and validating raw CSVs or source data                           |
-| `modeling`         | dbt model logic across raw → staging → intermediate → final              |
-| `transformation`   | Data enrichment or restructuring (can overlap with modeling)             |
-| `sql`              | SQL scripts external to dbt (e.g., Snowflake DDLs, load scripts)         |
-| `validation`       | Data quality checks, schema assertions, uniqueness, NULL filters         |
-| `testing`          | dbt tests, unit tests, automated validation (e.g., pytest)               |
-| `docs`             | Project documentation: README, dev notes, diagrams, screenshots          |
-| `dbt`              | dbt-specific: models, configs, profiles, tests, docs                     |
-| `snowflake`        | Snowflake configuration: database, schema, warehouse, integration        |
-| `airflow`          | DAG development, scheduling, task orchestration, UI configuration        |
-| `portfolio`        | Assets and documentation intended for job-seeking presentation           |
-| `core-feature`     | Critical tasks required for MVP end-to-end flow                          |
-| `refinement`       | Backlog refinement, subtask merging, re-sequencing, Jira cleanup         |
-| `sprint-ready`     | Fully scoped, unblocked, and ready for execution in current sprint       |
-| `stretch-goal`     | Optional but high-value additions that enhance the pipeline or portfolio |
-| `blocked`          | Task is blocked due to external dependency, misconfiguration, or timing  |
-| `ready-for-review` | Complete and staged for documentation or code review                     |
-
+|--------------------|--------------------------------------------------------------------------|
+| `setup`            | Initial scaffolding: Git, Docker, dbt, Airflow config                    |
+| `env`              | Environment management: `.env`, `.env.template`                          |
+| `secrets`          | Secrets management with `.env` and AWS Secrets Manager                   |
+| `cloud`            | Cloud service setup (S3, Secrets Manager, Snowflake)                     |
+| `aws`              | AWS-specific tasks (S3, IAM roles, Secrets Manager setup)                |
+| `cli`              | Command-line interfaces: AWS CLI, SnowSQL, dbt CLI                       |
+| `python`           | Custom ETL modules, validation logic, file ingestion                     |
+| `automation`       | Scheduling and execution with Airflow DAGs                               |
+| `data-staging`     | Loading and validating structured source data                            |
+| `modeling`         | dbt model creation and transformation layers                             |
+| `transformation`   | Column renaming, normalization, NULL handling                            |
+| `sql`              | Raw SQL scripts used outside dbt (DDL, `COPY INTO`, etc.)                |
+| `validation`       | Schema checks, row validation, quality assurance                         |
+| `testing`          | dbt tests, Python unit tests, CI-style logic                             |
+| `docs`             | Internal documentation, visuals, developer notes                         |
+| `dbt`              | dbt-specific logic (models, configs, tests, docs)                        |
+| `snowflake`        | Snowflake object setup and integration                                   |
+| `airflow`          | DAG development, orchestration logic, task-level tracking                |
+| `portfolio`        | Deliverables for job-seeking: visuals, docs, final polish                |
+| `core-feature`     | MVP-critical steps for pipeline success                                  |
+| `refinement`       | Jira grooming: epic clarity, subtask decomposition                       |
+| `sprint-ready`     | Fully scoped, unblocked tasks ready for execution                        |
+| `stretch-goal`     | Optional features that enhance the pipeline                              |
+| `blocked`          | Tasks blocked due to environment/setup dependencies                      |
+| `ready-for-review` | Finalized and ready for testing, polish, or documentation                |
 
 ---
 
-## 📝 Developer Notes
+## 🚀 Getting Started (Local Setup)
 
-Challenges, fixes, and task-specific discoveries are logged in:
+> Ensure you have Python 3.11 and the necessary virtual environments created.
 
-## Getting Started (Local Setup)
-
-1️⃣ **Clone the Repository**
+### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/kmdawkins/portfolio-project3c.git
 cd portfolio-project3c
 ```
 
-2️⃣ **Create and Activate Virtual Environments**
-- ETL + Apache Airflow
-```bash
-python -m venv C:venvs\etl_env
-C:\venvs\etl_env\Scripts\Activate.ps1
-```
-- dbt + Snowflake
-```bash
-python -m venv C:\venvs\dbt_snowflake
-C:\venvs\dbt_snowflake\Scripts\Activate.ps1
-```
+### 2️⃣ Setup Virtual Environments
+**For Airflow + ETL**
 
-3️⃣ **Install Dependencies**
-- From Airflow-compatible env:
 ```bash
+python -m venv C:\venvs\etl_env
+C:\venvs\etl_env\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-- From dbt env:
+**For dbt + Snowflake**
+
 ```bash
+python -m venv C:\venvs\dbt_snowflake
+C:\venvs\dbt_snowflake\Scripts\Activate.ps1
 pip install dbt-snowflake
 ```
 
-4️⃣ **Configure `.env`**
-Create `.env` based on `.env.template` and provide:
-- Snowflake credentials
-- AWS credentials (if needed)
-- dbt target configs (for `profiles.yml`)
+### 3️⃣ Configure Environment Variables
+1. Duplicate `.env.template` > `.env`
+2. Add credentials:
+- Snowflake (`SF_ACCOUNT`, `SF_USER`, etc.)
+- AWS (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`)
+- dbt target configs
+
+### 4️⃣ Validate Setup
+- Run basic Airflow DAGs via UI or CLI
+- Test dbt connection:
+
+```bash
+dbt debug --target dev
+```
+- Confirm file ingestion via Python script or DAG
+
+---
+
+## Jira Sync Log
+All tasks in this project are tracked using a structured **Jira Kanban board** with detailed task breakdowns, status changes, and label mappings. The file `docs/jira_sync_log.md` serves as a Git to Jira integration bridge, capturing:
+
+| Log Type          | Description                                                                |
+| ----------------- | -------------------------------------------------------------------------- |
+| 🧩 Task Snapshots | Epic, subtask, and status logs captured at regular intervals               |
+| 🔄 Change Logs    | Edits to summaries, descriptions, acceptance criteria, and labels          |
+| 🚫 Blockers       | Temporarily paused or blocked tasks with reason and resolution             |
+| 📌 Status Audits  | Manual progress updates for completed or sprint-ready items                |
+
+This log supports project traceability, portfolio readiness, and demonstrates how tasks evolved through backlog refinement and sprint planning. All entries follow a standardized format for clarity and reproducibility.
+
+## 💡 Future Enhancements
+
+- Add S3 ➡️ Snowflake direct ingestion (`STAGE`, `COPY INTO`)
+- Enable TaskGroups or decorators in Airflow DAGs
+- Integrate dbt artifcats tracking into `docs/`
+- Set up GitHub Actions for CI on push
