@@ -72,10 +72,12 @@ All visuals, diagrams, and outputs are stored in:
 | Stage            | Color   | Description                         | Epics Included           |
 |------------------|---------|-------------------------------------|--------------------------|
 | **Setup**        | 🟨 Yellow | Git, Secrets, Scaffolding            | `P3C-1`, `P3C-2`, `P3C-36`, `P3C-7` |
+| **Ingestion**    | 🟥 Red   | Data sourcing, integration, and pipelines feeding Snowflake | `P3C-56`         |
 | **Modeling**     | 🟩 Green  | Staging, SQL transformations         | `P3C-3`, `P3C-4`         |
 | **Testing**      | 🟦 Blue   | dbt tests and validation             | `P3C-5`                  |
 | **Orchestration**| 🟧 Orange | DAG development and Airflow logging  | `P3C-6`                  |
 | **Final Review** | 🟪 Purple | Docs, screenshots, polish            | `P3C-8`                  |
+
 
 ---
 ## 🏷️ Label Reference Table
@@ -85,6 +87,10 @@ All visuals, diagrams, and outputs are stored in:
 | `setup`             | Initial scaffolding: Git repo, Docker, dbt, Airflow setup                   |
 | `env`               | Environment variables, `.env`, `.env.template`                              |
 | `secrets`           | Secrets management (Snowflake creds, AWS Secrets Manager, dbt profiles)     |
+| `cloud`             | Cloud-specific tools, services, or deployments                              |
+| `aws`               | Tasks involving AWS services like S3, IAM, Secrets Manager                  |
+| `cli`               | Command-line tools (e.g., AWS CLI, SnowSQL, dbt CLI)                        |
+| `python`            | Python-based ETL scripts, automation, or validation                         |
 | `data-staging`      | Loading and validating raw CSVs or source data                              |
 | `modeling`          | dbt model logic across raw → staging → intermediate → final                 |
 | `transformation`    | Data enrichment or restructuring (can overlap with modeling)                |
@@ -101,6 +107,7 @@ All visuals, diagrams, and outputs are stored in:
 | `sprint-ready`      | Fully scoped, unblocked, and ready for execution in current sprint          |
 | `blocked`           | Task is blocked due to external dependency, misconfiguration, or timing     |
 | `ready-for-review`  | Complete and staged for documentation or code review                        |
+
 
 
 ---
