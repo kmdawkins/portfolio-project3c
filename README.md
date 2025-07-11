@@ -75,46 +75,86 @@ Project documentation and visual outputs are stored in:
 
 ## 🏁 Jira Epic Color Mapping
 
-| Stage            | Color   | Description                                     | Epics                      |
-|------------------|---------|-------------------------------------------------|----------------------------|
+| Stage            | Color    | Description                                     | Epics                                  |
+|------------------|----------|-------------------------------------------------|----------------------------------------|
 | **Setup**        | 🟨 Yellow | Git, scaffolding, secrets, Docker               | `P3C-1`, `P3C-2`, `P3C-36`, `P3C-7`, `P3C-65` |
-| **Ingestion**    | 🟥 Red    | Data sourcing via S3, ingestion into Snowflake  | `P3C-56`                   |
-| **Modeling**     | 🟩 Green  | dbt model logic and transformations             | `P3C-3`, `P3C-4`           |
-| **Testing**      | 🟦 Blue   | dbt tests and validation                        | `P3C-5`                    |
-| **Orchestration**| 🟧 Orange | DAG creation and Airflow task flow              | `P3C-6`                    |
-| **Final Review** | 🟪 Purple | Documentation, polish, GitHub release           | `P3C-8`                    |
+| **Ingestion**    | 🟥 Red    | Data sourcing via S3, ingestion into Snowflake  | `P3C-56`                               |
+| **Orchestration**| 🟧 Orange | DAG creation and Airflow task flow              | `P3C-6`                                |
+| **Modeling**     | 🟩 Green  | dbt model logic and transformations             | `P3C-3`, `P3C-4`                        |
+| **Testing**      | 🟦 Blue   | dbt tests and validation                        | `P3C-5`                                |
+| **Final Review** | 🟪 Purple | Documentation, polish, GitHub release           | `P3C-8`                                |
 
 ---
 
 ## 🏷️ Label Reference Table
 
+This project uses a structured label system across all Jira tasks to support traceability, sprint planning, and portfolio deliverables.
+
+---
+
+### 🎯 Core Execution Labels
+
+| Label            | Description                                                              |
+|------------------|--------------------------------------------------------------------------|
+| `core-feature`   | MVP-critical steps for pipeline success                                  |
+| `sprint-ready`   | Fully scoped, unblocked tasks ready for execution                        |
+| `blocked`        | Tasks blocked due to environment/setup dependencies                      |
+| `ready-for-review` | Finalized and ready for testing, polish, or documentation             |
+
+---
+
+### 🧰 Portfolio-Grade Labels
+
+| Label         | Description                                                              |
+|---------------|--------------------------------------------------------------------------|
+| `portfolio`   | Deliverables for job-seeking: visuals, docs, final polish                |
+| `docs`        | Internal documentation, visuals, developer notes                         |
+| `testing`     | dbt tests, Python unit tests, CI-style logic                             |
+| `logging`     | Logging enhancements, retry strategies, observability instrumentation    |
+| `refinement`  | Jira grooming: epic clarity, subtask decomposition                       |
+
+---
+
+### 🌱 Stretch & Enhancement Labels
+
+| Label            | Description                                                              |
+|------------------|--------------------------------------------------------------------------|
+| `stretch-goal`   | Optional features that enhance the pipeline                              |
+| `local-dev`      | Local development tasks: venv setup, CLI testing, config validation      |
+
+---
+
+### 🧩 Full Label Reference (Alphabetical)
+
 | Label              | Description                                                              |
 |--------------------|--------------------------------------------------------------------------|
-| `setup`            | Initial scaffolding: Git, Docker, dbt, Airflow config                    |
-| `env`              | Environment management: `.env`, `.env.template`                          |
-| `secrets`          | Secrets management with `.env` and AWS Secrets Manager                   |
-| `cloud`            | Cloud service setup (S3, Secrets Manager, Snowflake)                     |
+| `airflow`          | DAG development, orchestration logic, task-level tracking                |
+| `automation`       | Scheduling and execution with Airflow DAGs                               |
 | `aws`              | AWS-specific tasks (S3, IAM roles, Secrets Manager setup)                |
 | `cli`              | Command-line interfaces: AWS CLI, SnowSQL, dbt CLI                       |
-| `python`           | Custom ETL modules, validation logic, file ingestion                     |
-| `automation`       | Scheduling and execution with Airflow DAGs                               |
-| `data-staging`     | Loading and validating structured source data                            |
-| `modeling`         | dbt model creation and transformation layers                             |
-| `transformation`   | Column renaming, normalization, NULL handling                            |
-| `sql`              | Raw SQL scripts used outside dbt (DDL, `COPY INTO`, etc.)                |
-| `validation`       | Schema checks, row validation, quality assurance                         |
-| `testing`          | dbt tests, Python unit tests, CI-style logic                             |
-| `docs`             | Internal documentation, visuals, developer notes                         |
-| `dbt`              | dbt-specific logic (models, configs, tests, docs)                        |
-| `snowflake`        | Snowflake object setup and integration                                   |
-| `airflow`          | DAG development, orchestration logic, task-level tracking                |
-| `portfolio`        | Deliverables for job-seeking: visuals, docs, final polish                |
+| `cloud`            | Cloud service setup (S3, Secrets Manager, Snowflake)                     |
 | `core-feature`     | MVP-critical steps for pipeline success                                  |
-| `refinement`       | Jira grooming: epic clarity, subtask decomposition                       |
-| `sprint-ready`     | Fully scoped, unblocked tasks ready for execution                        |
-| `stretch-goal`     | Optional features that enhance the pipeline                              |
-| `blocked`          | Tasks blocked due to environment/setup dependencies                      |
+| `data-staging`     | Loading and validating structured source data                            |
+| `dbt`              | dbt-specific logic (models, configs, tests, docs)                        |
+| `docs`             | Internal documentation, visuals, developer notes                         |
+| `env`              | Environment management: `.env`, `.env.template`                          |
+| `local-dev`        | Local development tasks: venv setup, CLI testing, config validation      |
+| `logging`          | Logging enhancements, retry strategies, observability instrumentation    |
+| `modeling`         | dbt model creation and transformation layers                             |
+| `portfolio`        | Deliverables for job-seeking: visuals, docs, final polish                |
+| `python`           | Custom ETL modules, validation logic, file ingestion                     |
 | `ready-for-review` | Finalized and ready for testing, polish, or documentation                |
+| `refinement`       | Jira grooming: epic clarity, subtask decomposition                       |
+| `secrets`          | Secrets management with `.env` and AWS Secrets Manager                   |
+| `setup`            | Initial scaffolding: Git, Docker, dbt, Airflow config                    |
+| `snowflake`        | Snowflake object setup and integration                                   |
+| `sprint-ready`     | Fully scoped, unblocked tasks ready for execution                        |
+| `sql`              | Raw SQL scripts used outside dbt (DDL, `COPY INTO`, etc.)                |
+| `stretch-goal`     | Optional features that enhance the pipeline                              |
+| `testing`          | dbt tests, Python unit tests, CI-style logic                             |
+| `transformation`   | Column renaming, normalization, NULL handling                            |
+| `validation`       | Schema checks, row validation, quality assurance                         |
+
 
 ---
 
