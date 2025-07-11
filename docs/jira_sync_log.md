@@ -75,6 +75,7 @@ See full chronological log below ⬇️
 | 2025-07-10  | P3C-49  | Perform backlog refinement for Epics P3C-3 to P3C-5, P3C-56, P3C-65 | Completed full backlog refinement for 3 core and 2 cloud/security epics; rewrote summaries, descriptions, AC, labels for all linked tasks | 🟩 Done      |
 | 2025-07-10  | P3C-19  | Orchestrate raw-to-staging SQL Pipeline (PMO Table)      | Included in **P3C-49** full backlog refinement                                               | 🟩 Done         |
 | 2025-07-10  | P3C-7   | Secrets & Config (Local)                                 | Sunset. Tasks completed (P3C-28, P3C-29), and P3C-30 merged into **P3C-65** (cloud transition). No further local config tasks remain | 🟩 Done      |
+| 2025-07-08  | P3C-88  | Refine backlog for Epic P3C-6                            | Ensure cross-Epic dependencies are addressed; review Task scope, descriptions, AC, and labels for clarity and build sequence | 🟨 In Progress |
 
 ---
 
