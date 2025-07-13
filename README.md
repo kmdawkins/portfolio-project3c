@@ -47,15 +47,21 @@ A modular, production-aligned data pipeline that automates the ingestion, transf
 
 ## 🔐 Secrets Management
 
-Secrets are managed using environment variables. Two stages supported:
+Secrets are managed in two stages to reflect development vs. production best practices.
 
-1. **Development**:  
-   - Use `.env` (excluded via `.gitignore`) to store credentials.
-   - Includes Snowflake, AWS, and dbt profiles.
+### 1. Development (Local Only)
+- Uses a `.env` file (excluded via `.gitignore`) to store environment-specific credentials.
+- Supports Snowflake, AWS, and dbt configuration for local testing.
+- Provides a simple fallback mechanism for rapid iteration during early-stage development.
 
-2. **Production-ready**:  
-   - Uses **AWS Secrets Manager** for secure secrets retrieval.
-   - Integrated into Airflow and Python ETL workflows.
+### 2. Production-Ready (Cloud-Based)
+- Leverages **AWS Secrets Manager** to securely store and retrieve secrets.
+- Secrets are injected into:
+  - Airflow connections dynamically (not stored in the UI)
+  - Python utilities using `boto3` and `get_secret_value()`
+  - dbt `profiles.yml` via environment variable substitution or CLI support
+- Secrets are scoped via IAM roles and fine-grained access policies (e.g., `SecretsManagerReadWrite`, `AmazonS3FullAccess`) attached to a secure IAM user.
+- AWS IAM user credentials (Access Key ID + Secret) are stored securely outside the repository.
 
 ---
 
