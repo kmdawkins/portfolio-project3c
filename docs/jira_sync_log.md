@@ -6,21 +6,27 @@ Used to record major changes in ticket such as: status updates (blocked), scope,
 ---
 
 ## 🔎 Latest Activity  
-🗓️ 2025-07-11  
+🗓️ 2025-07-13  
 
 ### Development  
-- ✅ **P3C-88**: Backlog refinement for Epic **P3C-6 – Airflow DAGs** completed  
+- ✅ **P3C-104**: AWS account and IAM user for programmatic access successfully created
+- ✅ **P3C-105**: AWS CLI installed and verified locally
+- ✅ Named profile `project3c` securely configured using `~/.aws/credentials` and `~/.aws/config`
+- ✅ Verified identity using `aws sts get-caller-identity`
 
 ### Documentation  
-- ✅ Updated `Label Reference Table` with new labels: `local-dev`, `logging`  
-- ✅ Drafted Epic and Task descriptions, AC, and labels for **P3C-6**  
+- ✅ Updated `README.md` under **Secrets Management** to reflect safest approach for configuring AWS CLI
+- ✅ Logged changes for **P3C-104** and **P3C-105** in `jira_sync_log.md`
+- ✅ Descriptions and AC updated for P3C-105 to reinfoce secure secrets handling
 
 ### Visual Assets  
-- ✅ Screenshot added: `2025-07-10-jira-kanban-board-backlog-refinement-airflow-dags-epic.png`  
-- ✅ Screenshot added: `2025-07-10-jira-kanban-board-backlog-refinement-airflow-dags-task.png`  
+- ✅ Screenshot added: `2025-07-13-aws-cli-installed-success.png`  
+- ✅ Screenshot added: `2025-07-13-aws-cli-not-recognized-powershell-error.png`
+- ✅ Screenshot added: `2025-07-13-aws-config-sts-verification-project3c.png`
 
 ### Jira Updates  
-- ✅ **P3C-88** marked `Done`: Final backlog refinement for **Airflow DAGs** Epic
+- ✅ **P3C-104** marked `Done`: AWS account + IAM user setup complete
+- ✅ **P3C-105** marked `Done`: AWS CLI installed, verified, and securely configured
 
 
 
@@ -81,6 +87,7 @@ See full chronological log below ⬇️
 | 2025-07-13  | P3C-105 | Install and verify AWS CLI locally                         | ✅ Subtask created to install AWS CLI and configure project3c profile for local use across Airflow/dbt. CLI access required to proceed with secret retrieval utilities.                  | 🟨 In Progress  |
 | 2025-07-13  | P3C-106 | Update requirements.txt to reflect new AWS dependencies    | ✅ Subtask created to update `requirements.txt` with `boto3`, `botocore`, and other AWS-related packages required for Secrets Manager integration (Epic P3C-65); linked to venv config and CLI | 🟨 In Progress  |
 | 2025-07-13  | P3C-104 | Create AWS Account + IAM user for programmatic access      | AWS account created and IAM user provisioned with programmatic access; secure group permissions configured; access keys stored safely; updated `README.md` with rationale and workflow details | 🟩 Done    |
+| 2025-07-13  | P3C-105 | Install and verify AWS CLI locally                         | AWS CLI installed and verified locally via `aws --version` and `aws sts get-caller-identity`. Profile `project3c` configured securely using safest approach for secrets management             | 🟩 Done    |
 
 ---
 
