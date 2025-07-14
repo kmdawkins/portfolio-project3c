@@ -129,14 +129,27 @@ This project uses a structured label system across all Jira tasks to support tra
 | `local-dev`      | Local development tasks: venv setup, CLI testing, config validation      |
 
 ---
+### ☁️ Cloud Integration Labels
+
+| Label         | Description                                                              |
+| ------------- | ------------------------------------------------------------------------ |
+| `aws`         | AWS-specific tasks (S3, IAM roles, Secrets Manager setup)                |
+| `aws-secrets` | AWS Secrets Manager integration and secure retrieval logic               |
+| `boto3`       | boto3-specific scripting, validation, upload/download logic              |
+| `cloud`       | Cloud service setup (S3, Secrets Manager, Snowflake)                     |
+| `infra`       | Infrastructure setup (CLI tools, user config, system-level dependencies) |
+
+---
 
 ### 🧩 Full Label Reference (Alphabetical)
 
 | Label              | Description                                                              |
-|--------------------|--------------------------------------------------------------------------|
+| ------------------ | ------------------------------------------------------------------------ |
 | `airflow`          | DAG development, orchestration logic, task-level tracking                |
 | `automation`       | Scheduling and execution with Airflow DAGs                               |
 | `aws`              | AWS-specific tasks (S3, IAM roles, Secrets Manager setup)                |
+| `aws-secrets`      | AWS Secrets Manager integration and secure retrieval logic               |
+| `boto3`            | boto3-specific scripting, validation, upload/download logic              |
 | `cli`              | Command-line interfaces: AWS CLI, SnowSQL, dbt CLI                       |
 | `cloud`            | Cloud service setup (S3, Secrets Manager, Snowflake)                     |
 | `core-feature`     | MVP-critical steps for pipeline success                                  |
@@ -144,6 +157,7 @@ This project uses a structured label system across all Jira tasks to support tra
 | `dbt`              | dbt-specific logic (models, configs, tests, docs)                        |
 | `docs`             | Internal documentation, visuals, developer notes                         |
 | `env`              | Environment management: `.env`, `.env.template`                          |
+| `infra`            | Infrastructure setup (CLI tools, user config, system-level dependencies) |
 | `local-dev`        | Local development tasks: venv setup, CLI testing, config validation      |
 | `logging`          | Logging enhancements, retry strategies, observability instrumentation    |
 | `modeling`         | dbt model creation and transformation layers                             |
