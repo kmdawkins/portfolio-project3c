@@ -91,7 +91,8 @@ See full chronological log below ⬇️
 | 2025-07-14  | P3C-106 | Update requirements.txt to reflect new AWS dependencies    | 🔄 Scope update: Blocked due to missing `boto3` installation. Created subtask **P3C-107** (Install `boto3` in local Python environment) to unblock. | 🟥 Blocked     |
 | 2025-07-14  | P3C-107 | Install `boto3` in local Python environment                | ✅ Subtask created to install `boto3`                                                                                                               | 🟨 In Progress |
 | 2025-07-14  | P3C-107 | Install `boto3` in local Python environment                | `boto3` installed and version verified (v1.39.3); **P3C-106** (Update requirements.txt) unblocked                                                   | 🟩 Done         |
-| 2025-07-13  | P3C-106 | Update requirements.txt to reflect new AWS dependencies    | Update `requirements.txt` with `boto3`, `botocore`, and other AWS-related packages required for Secrets Manager integration (**Epic P3C-65**); linked to venv config and CLI | 🟨 In Progress  |
+| 2025-07-14  | P3C-106 | Update requirements.txt to reflect new AWS dependencies    | Update `requirements.txt` with `boto3`, `botocore`, and other AWS-related packages required for Secrets Manager integration (**Epic P3C-65**); linked to venv config and CLI | 🟨 In Progress  |
+| 2025-07-14  | P3C-106 | Update requirements.txt to reflect new AWS dependencies    | requirements.txt updated using `pip freeze > requirements.txt`; changes include `boto3`, `botocore`, and supporting packages for Secrets Manager integration                 | 🟩 Done         |
 
 ---
 
