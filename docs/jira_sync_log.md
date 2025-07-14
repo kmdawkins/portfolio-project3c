@@ -89,8 +89,9 @@ See full chronological log below ⬇️
 | 2025-07-13  | P3C-104 | Create AWS Account + IAM user for programmatic access      | AWS account created and IAM user provisioned with programmatic access; secure group permissions configured; access keys stored safely; updated `README.md` with rationale and workflow details | 🟩 Done    |
 | 2025-07-13  | P3C-105 | Install and verify AWS CLI locally                         | AWS CLI installed and verified locally via `aws --version` and `aws sts get-caller-identity`. Profile `project3c` configured securely using safest approach for secrets management             | 🟩 Done    |
 | 2025-07-14  | P3C-106 | Update requirements.txt to reflect new AWS dependencies    | 🔄 Scope update: Blocked due to missing `boto3` installation. Created subtask **P3C-107** (Install `boto3` in local Python environment) to unblock. | 🟥 Blocked     |
-| 2025-07-14  | P3C-107 | Install `boto3` in local Python environment                | ✅ Subtask created to install `boto3`                                                                                                                | 🟨 In Progress |
-
+| 2025-07-14  | P3C-107 | Install `boto3` in local Python environment                | ✅ Subtask created to install `boto3`                                                                                                               | 🟨 In Progress |
+| 2025-07-14  | P3C-107 | Install `boto3` in local Python environment                | `boto3` installed and version verified (v1.39.3); **P3C-106** (Update requirements.txt) unblocked                                                   | 🟩 Done         |
+| 2025-07-13  | P3C-106 | Update requirements.txt to reflect new AWS dependencies    | Update `requirements.txt` with `boto3`, `botocore`, and other AWS-related packages required for Secrets Manager integration (**Epic P3C-65**); linked to venv config and CLI | 🟨 In Progress  |
 
 ---
 
