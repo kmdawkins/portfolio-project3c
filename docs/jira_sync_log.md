@@ -93,10 +93,16 @@ See full chronological log below ⬇️
 | 2025-07-14  | P3C-107 | Install `boto3` in local Python environment                | `boto3` installed and version verified (v1.39.3); **P3C-106** (Update requirements.txt) unblocked                                                   | 🟩 Done         |
 | 2025-07-14  | P3C-106 | Update requirements.txt to reflect new AWS dependencies    | Update `requirements.txt` with `boto3`, `botocore`, and other AWS-related packages required for Secrets Manager integration (**Epic P3C-65**); linked to venv config and CLI | 🟨 In Progress  |
 | 2025-07-14  | P3C-106 | Update requirements.txt to reflect new AWS dependencies    | requirements.txt updated using `pip freeze > requirements.txt`; changes include `boto3`, `botocore`, and supporting packages for Secrets Manager integration                 | 🟩 Done         |
-| 2025-07-14  | P3C-66 | Configure AWS Secrets Manager via Console or CLI | Unblocked by **P3C-104 – P3C-107**; proceeding with configuration via AWS Console | 🟨 In Progress |
-| 2025-07-14  | P3C-67 | Create Python utility to retrieve secrets programmatically | Unblocked by **P3C-104 – P3C-107**; utility scaffold pending | 🟨 In Progress |
-| 2025-07-14  | P3C-68 | Refactor dbt `profiles.yml` to use AWS Secrets Manager | Unblocked by **P3C-104 – P3C-107**; integration pending | 🟨 In Progress |
-| 2025-07-14  | P3C-66 | Configure AWS Secrets Manager via Console or CLI | Secret `project3c/secrets/dev` configured via Console; documented in `README.md` under **Secrets Management**; scaffold initiated for `etl_pipeline/utils/secrets_manager.py` | 🟩 Done |
+| 2025-07-14  | P3C-66  | Configure AWS Secrets Manager via Console or CLI | Unblocked by **P3C-104 – P3C-107**; proceeding with configuration via AWS Console | 🟨 In Progress |
+| 2025-07-14  | P3C-67  | Create Python utility to retrieve secrets programmatically | Unblocked by **P3C-104 – P3C-107**; utility scaffold pending | 🟨 In Progress |
+| 2025-07-14  | P3C-68  | Refactor dbt `profiles.yml` to use AWS Secrets Manager | Unblocked by **P3C-104 – P3C-107**; integration pending | 🟨 In Progress |
+| 2025-07-15  | P3C-66  | Configure AWS Secrets Manager via Console or CLI          | 🔄 Scope update: Refactored into 5 child tasks for platform-specific secrets; original ticket repurposed for parent tracking; created subtasks **P3C-108 - P3C112** (Snowflake, PostgreSQL, S3, Airflow, dbt respectively) | 🟩 Done   |
+| 2025-07-14  | P3C-108 | Create Snowflake secret in AWS Secrets Manager            | ✅ Secret created as `project3c/secrets/snowflake`; verified in Console or CLI                                            | 🟨 In Progress |
+| 2025-07-14  | P3C-109 | Create dbt secret in AWS Secrets Manager                  | ✅ Secret created as `project3c/secrets/dbt`; verified in Console or CLI                                                  | 🟨 In Progress |
+| 2025-07-14  | P3C-110 | Create PostgreSQL secret in AWS Secrets Manager           | ✅ Secret created as `project3c/secrets/postgres`; verified in Console or CLI                                             | 🟨 In Progress |
+| 2025-07-14  | P3C-111 | Create S3 secret in AWS Secrets Manager                   | ✅ Secret created as `project3c/secrets/s3`; verified in Console or CLI                                                   | 🟨 In Progress |
+| 2025-07-14  | P3C-112 | Create Airflow secret (fernet key) in AWS Secrets Manager | ✅ Secret created as `project3c/secrets/airflow`; verified in Console or CLI                                              | 🟨 In Progress |
+
 
 
 ---
