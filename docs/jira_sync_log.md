@@ -43,6 +43,8 @@ See full chronological log below ⬇️
 | 🟨 Yellow  | In Progress       |
 | 🟩 Green   | Done              |
 | 🟪 Purple  | Merge             |
+| ✅ Check   | Subtask creation  |
+| 🔄️ Arrows  | Error correction  |
 | 📌 Pin     | Backlogged        |
 | 📝 Note    | Updated           |
 
@@ -102,7 +104,11 @@ See full chronological log below ⬇️
 | 2025-07-15  | P3C-110 | Create PostgreSQL secret in AWS Secrets Manager           | ✅ Secret created as `project3c/secrets/postgres`; verified in Console or CLI                                             | 🟨 In Progress |
 | 2025-07-15  | P3C-111 | Create S3 secret in AWS Secrets Manager                   | ✅ Secret created as `project3c/secrets/s3`; verified in Console or CLI                                                   | 🟨 In Progress |
 | 2025-07-15  | P3C-112 | Create Airflow secret (fernet key) in AWS Secrets Manager | ✅ Secret created as `project3c/secrets/airflow`; verified in Console or CLI                                              | 🟨 In Progress |
-| 2025-07-17  | P3C-108 | Create Snowflake secret in AWS Secrets Manager            | Secret created as `project3c/secrets/snowflake`; verified in Console and CLI using `describe-secret`                       | 🟩 Done        |
+| 2025-07-17  | P3C-108 | Create Snowflake secret in AWS Secrets Manager            | Secret created as `project3c/secrets/snowflake`; verified in Console and CLI using `describe-secret`                       | 🟩 Done         |
+| 2025-07-17  | P3C-109 | Create PostgreSQL secret in AWS Secrets Manager           | Secret created as `project3c/secrets/postgresql`; verified in Console and CLI using `describe-secret`                      | 🟩 Done         |
+| 2025-07-17  | P3C-110 | Create AWS S3 secret in AWS Secrets Manager               | 🔄 Corrected Jira summary to “AWS S3”; Secret will be stored as `project3c/secrets/s3`; verification via Console or CLI       | 🟨 In Progress  |
+| 2025-07-17  | P3C-111 | Create Airflow secret (fernet key) in AWS Secrets Manager | 🔄 Corrected Jira summary to “Airflow”; Secret will be stored as `project3c/secrets/airflow`; verification via Console or CLI | 🟨 In Progress  |
+| 2025-07-17  | P3C-112 | Create dbt secret in AWS Secrets Manager                  | 🔄 Corrected Jira summary to “dbt”; Secret will be stored as `project3c/secrets/dbt`; verification via Console or CLI         | 🟨 In Progress  |
 
 
 
