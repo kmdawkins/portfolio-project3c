@@ -37,16 +37,16 @@ See full chronological log below ⬇️
 
 ## Legend
 
-| Status     | Description       |
-|------------|-------------------|
-| 🟥 Red     | Blocked           |
-| 🟨 Yellow  | In Progress       |
-| 🟩 Green   | Done              |
-| 🟪 Purple  | Merge             |
-| ✅ Check   | Subtask creation  |
-| 🔄️ Arrows  | Error correction  |
-| 📌 Pin     | Backlogged        |
-| 📝 Note    | Updated           |
+| Status     | Description                 |
+|------------|-----------------------------|
+| 🟥 Red     | Blocked                    |
+| 🟨 Yellow  | In Progress                |
+| 🟩 Green   | Done                       |
+| 🟪 Purple  | Merge                      |
+| ✅ Check   | Subtask creation           |
+| 🔄️ Arrows  | Refactor/Error correction  |
+| 📌 Pin     | Backlogged                 |
+| 📝 Note    | Updated                    |
 
 ---
 
@@ -114,6 +114,9 @@ See full chronological log below ⬇️
 | 2025-07-17  | P3C-111 | Create Airflow secret (fernet key) in AWS Secrets Manager                | Secret created as `project3c/secrets/airflow` with placeholder values; verified via Console and CLI using `describe-secret`; subtask **P3C-114** (to finalize secret after Airflow container setup) created | 🟥 Blocked |
 | 2025-07-17  | P3C-114 | Finalize Airflow secret in AWS Secrets Manager after Airflow container provisioning | Subtask created to replace placeholder secret with valid Airflow credentials after DAG container setup is finalized (see **P3C-25** dependency)                                         | 🟥 Blocked |
 | 2025-07-17  | P3C-112 | Create dbt secret in AWS Secrets Manager  | Secret created as `project3c/secrets/sbt`; verified in Console and CLI using `describe-secret`                                                 | 🟩 Done         |
+| 2025-07-18  | P3C-67  | Create Python utility to retrieve secrets programmatically | 🔄 Refactored original script with exception handling, `boto3` integration, and logging; finalized as `etl_pipeline/utils/secrets_manager.py`; supports JSON-formatted secrets and reusable import into ETL/dbt/Airflow | 🟨 In Progress |
+| 2025-07-18  | P3C-115 | Unit test secrets_manager.py AWS secrets retrieval utility | ✅ Subtask created to unit test retrieval logic, JSON parsing, and graceful error handling in `secrets_manager.py` | 🟨 In Progress |
+
 
 
 ---
