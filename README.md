@@ -111,13 +111,16 @@ This project uses a structured label system across all Jira tasks to support tra
 
 ### 🧰 Portfolio-Grade Labels
 
-| Label         | Description                                                              |
-|---------------|--------------------------------------------------------------------------|
-| `portfolio`   | Deliverables for job-seeking: visuals, docs, final polish                |
-| `docs`        | Internal documentation, visuals, developer notes                         |
-| `testing`     | dbt tests, Python unit tests, CI-style logic                             |
-| `logging`     | Logging enhancements, retry strategies, observability instrumentation    |
-| `refinement`  | Jira grooming: epic clarity, subtask decomposition                       |
+| Label        | Description                                                           |
+| ------------ | --------------------------------------------------------------------- |
+| `portfolio`  | Deliverables for job-seeking: visuals, docs, final polish             |
+| `docs`       | Internal documentation, visuals, developer notes                      |
+| `testing`    | dbt tests, Python unit tests, CLI or mocking validation               |
+| `unit-test`  | Unit test coverage for Python modules                                 |
+| `mocking`    | Simulated input/output logic for testing (e.g., mocking boto3 calls)  |
+| `logging`    | Logging enhancements, retry strategies, observability instrumentation |
+| `refinement` | Jira grooming: epic clarity, subtask decomposition                    |
+
 
 ---
 
@@ -138,6 +141,7 @@ This project uses a structured label system across all Jira tasks to support tra
 | `boto3`       | boto3-specific scripting, validation, upload/download logic              |
 | `cloud`       | Cloud service setup (S3, Secrets Manager, Snowflake)                     |
 | `infra`       | Infrastructure setup (CLI tools, user config, system-level dependencies) |
+| `s3`          | Amazon S3-specific bucket, credentials, or integration logic             |
 
 ---
 
@@ -155,24 +159,29 @@ This project uses a structured label system across all Jira tasks to support tra
 | `core-feature`     | MVP-critical steps for pipeline success                                  |
 | `data-staging`     | Loading and validating structured source data                            |
 | `dbt`              | dbt-specific logic (models, configs, tests, docs)                        |
+| `dev`              | Development-phase credentials, secrets, or config                        |
 | `docs`             | Internal documentation, visuals, developer notes                         |
 | `env`              | Environment management: `.env`, `.env.template`                          |
 | `infra`            | Infrastructure setup (CLI tools, user config, system-level dependencies) |
 | `local-dev`        | Local development tasks: venv setup, CLI testing, config validation      |
 | `logging`          | Logging enhancements, retry strategies, observability instrumentation    |
+| `mocking`          | Simulated input/output logic for testing (e.g., mocking boto3 calls)     |
 | `modeling`         | dbt model creation and transformation layers                             |
 | `portfolio`        | Deliverables for job-seeking: visuals, docs, final polish                |
 | `python`           | Custom ETL modules, validation logic, file ingestion                     |
+| `pytest`           | pytest configuration and execution                                       |
 | `ready-for-review` | Finalized and ready for testing, polish, or documentation                |
 | `refinement`       | Jira grooming: epic clarity, subtask decomposition                       |
+| `s3`               | Amazon S3-specific bucket, credentials, or integration logic             |
 | `secrets`          | Secrets management with `.env` and AWS Secrets Manager                   |
 | `setup`            | Initial scaffolding: Git, Docker, dbt, Airflow config                    |
 | `snowflake`        | Snowflake object setup and integration                                   |
 | `sprint-ready`     | Fully scoped, unblocked tasks ready for execution                        |
 | `sql`              | Raw SQL scripts used outside dbt (DDL, `COPY INTO`, etc.)                |
 | `stretch-goal`     | Optional features that enhance the pipeline                              |
-| `testing`          | dbt tests, Python unit tests, CI-style logic                             |
+| `testing`          | dbt tests, Python unit tests, CLI-style logic                            |
 | `transformation`   | Column renaming, normalization, NULL handling                            |
+| `unit-test`        | Unit test coverage for Python modules                                    |
 | `validation`       | Schema checks, row validation, quality assurance                         |
 
 
