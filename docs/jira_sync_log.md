@@ -111,6 +111,9 @@ See full chronological log below ⬇️
 | 2025-07-17  | P3C-112 | Create dbt secret in AWS Secrets Manager                  | 🔄 Corrected Jira summary to “dbt”; Secret will be stored as `project3c/secrets/dbt`; verification via Console or CLI         | 🟨 In Progress  |
 | 2025-07-17  | P3C-110 | Create AWS S3 secret in AWS Secrets Manager               | Secret created as `project3c/secrets/s3` with placeholder values; verified via Console and CLI using `describe-secret`; subtask **P3C-113** (requires valid S3 bucket and credentials) created; `boto3` client validation deferred to **P3C-113** | 🟥 Blocked |
 | 2025-07-17  | P3C-113 | Finalize AWS S3 secret in AWS Secrets Manager after bucket provisioning | Subtask created to replace placeholder secret with valid AWS credentials after S3 bucket setup; dependent on completion of **P3C-57** | 🟥 Blocked |
+| 2025-07-17  | P3C-111 | Create Airflow secret (fernet key) in AWS Secrets Manager                | Secret created as `project3c/secrets/airflow` with placeholder values; verified via Console and CLI using `describe-secret`; subtask **P3C-114** (to finalize secret after Airflow container setup) created | 🟥 Blocked |
+| 2025-07-17  | P3C-114 | Finalize Airflow secret in AWS Secrets Manager after Airflow container provisioning | Subtask created to replace placeholder secret with valid Airflow credentials after DAG container setup is finalized (see **P3C-25** dependency)                                         | 🟥 Blocked |
+
 
 
 ---
