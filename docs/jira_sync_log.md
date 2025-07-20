@@ -119,6 +119,10 @@ See full chronological log below ⬇️
 | 2025-07-18  | P3C-115 | Unit test AWS secrets_manager.py retrieval utility         | 🔄 Verified `pytest-mock` is not installed; added as a test dependency via `pip install pytest-mock`; updated `P3C-115` scope to include mocking support setup for unit tests | 🟨 In Progress |
 | 2025-07-19  | P3C-115 | Unit test AWS secrets_manager.py retrieval utility | 🔄 Expanded scope to include mocking setup; verified `pytest-mock` was not installed and added it via `pip install pytest-mock` to support isolated unit testing | 🟨 In Progress |
 | 2025-07-19  | P3C-115 | Unit test AWS secrets_manager.py retrieval utility | 🔄 Refactored ticket to include logger dependency fix, creation of `log_config.py`, and validation of logging behavior via `caplog`; scope now fully covers exception handling, mocking, and log verification | 🟨 In Progress |
+| 2025-07-20  | P3C-67  | Create Python utility to retrieve secrets programmatically | ✅ Finalized `secrets_manager.py` utility with robust AWS retrieval logic, custom exception handling, structured log output, and support for JSON-formatted secrets. Verified reusability across dbt, Airflow, and CLI workflows. | ✅ Done |
+| 2025-07-20  | P3C-115 | Unit test AWS secrets_manager.py retrieval utility | ✅ Completed full test coverage for `get_secret()` function, including happy path, missing credentials, `ClientError`, malformed JSON, and unexpected failure scenarios. Validated logging output using `caplog` and isolated external dependencies with `pytest-mock`. | ✅ Done |
+
+
 
 
 
