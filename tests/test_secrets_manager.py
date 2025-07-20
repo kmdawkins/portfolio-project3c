@@ -1,59 +1,98 @@
-import boto3
+import pytest
 import json
+from unittest.mock import patch, MagicMock
 from botocore.exceptions import ClientError, NoCredentialsError
-from etl_pipeline.utils.log_config import logger
+
+from etl_pipeline.utils.secrets_manager import get_secret
 from etl_pipeline.utils.exceptions import SecretsManagerError
 
 
-def get_secret(secret_name: str, region_name: str = "us-west-2") -> dict:
-    """
-    Retrieve a secret from AWS Secrets Manager and return it as a parsed JSON dictionary.
+@patch("etl_pipeline.utils.secrets_manager.boto3.session.Session")
+def test_get_secret_success(mock_session, caplog):
+    mock_client = MagicMock()
+    mock_client.get_secret_value.return_value = {
+        "SecretString": json.dumps({"user": "demo", "password": "demo_pw"})
+    }
+    mock_session.return_value.client.return_value = mock_client
 
-    Args:
-        secret_name (str): Name or ARN of the AWS secret (e.g., 'project3c/secrets/snowflake').
-        region_name (str): AWS region where the secret is stored. Defaults to "us-west-2".
+    with caplog.at_level("INFO"):
+        result = get_secret("project3c/secrets/snowflake")
 
-    Returns:
-        dict: Parsed JSON content of the secret.
+    assert result["user"] == "demo"
+    assert result["password"] == "demo_pw"
+    assert "Retrieving secret from AWS Secrets Manager" in caplog.text
+    assert "Successfully retrieved secret" in caplog.text
 
-    Raises:
-        SecretsManagerError: On retrieval, credential, or parsing failure.
 
-    Usage:
-        >>> from etl_pipeline.utils.secrets_manager import get_secret
-        >>> creds = get_secret("project3c/secrets/snowflake")
-        >>> print(creds["user"])
-    """
-    session = boto3.session.Session()
-    client = session.client(
-        service_name="secretsmanager",
-        region_name=region_name
+@patch("etl_pipeline.utils.secrets_manager.boto3.session.Session")
+def test_get_secret_empty_string_raises(mock_session, caplog):
+    mock_client = MagicMock()
+    mock_client.get_secret_value.return_value = {"SecretString": ""}
+    mock_session.return_value.client.return_value = mock_client
+
+    with caplog.at_level("ERROR"), pytest.raises(SecretsManagerError, match="SecretString is empty or missing"):
+        get_secret("project3c/secrets/empty")
+
+    assert "SecretString is empty or missing" in caplog.text
+
+
+@patch("etl_pipeline.utils.secrets_manager.boto3.session.Session")
+def test_get_secret_missing_key_raises(mock_session, caplog):
+    mock_client = MagicMock()
+    mock_client.get_secret_value.return_value = {}  # No SecretString key
+    mock_session.return_value.client.return_value = mock_client
+
+    with caplog.at_level("ERROR"), pytest.raises(SecretsManagerError):
+        get_secret("project3c/secrets/missing")
+
+    assert "SecretString is empty or missing" in caplog.text
+
+
+@patch("etl_pipeline.utils.secrets_manager.boto3.session.Session")
+def test_get_secret_client_error(mock_session, caplog):
+    mock_client = MagicMock()
+    mock_client.get_secret_value.side_effect = ClientError(
+        {"Error": {"Message": "Secret not found"}}, "GetSecretValue"
     )
+    mock_session.return_value.client.return_value = mock_client
 
-    try:
-        logger.info(f"Retrieving secret from AWS Secrets Manager: {secret_name}")
-        response = client.get_secret_value(SecretId=secret_name)
+    with caplog.at_level("ERROR"), pytest.raises(SecretsManagerError, match="Failed to retrieve secret"):
+        get_secret("project3c/secrets/invalid")
 
-        secret_string = response.get("SecretString")
-        if not secret_string:
-            raise SecretsManagerError("SecretString is empty or missing.")
+    assert "Client error retrieving secret" in caplog.text
 
-        parsed_secret = json.loads(secret_string)
-        logger.info(f"Successfully retrieved secret: {secret_name}")
-        return parsed_secret
 
-    except NoCredentialsError as e:
-        logger.error("No AWS credentials found.")
-        raise SecretsManagerError("Missing AWS credentials.") from e
+@patch("etl_pipeline.utils.secrets_manager.boto3.session.Session")
+def test_get_secret_no_credentials(mock_session, caplog):
+    mock_client = MagicMock()
+    mock_client.get_secret_value.side_effect = NoCredentialsError()
+    mock_session.return_value.client.return_value = mock_client
 
-    except ClientError as e:
-        logger.error(f"Client error retrieving secret: {e}")
-        raise SecretsManagerError(f"Failed to retrieve secret: {e}") from e
+    with caplog.at_level("ERROR"), pytest.raises(SecretsManagerError, match="Missing AWS credentials"):
+        get_secret("project3c/secrets/nocreds")
 
-    except json.JSONDecodeError as e:
-        logger.error(f"Failed to parse secret JSON: {e}")
-        raise SecretsManagerError("Secret is not valid JSON.") from e
+    assert "No AWS credentials found." in caplog.text
 
-    except Exception as e:
-        logger.error(f"Unexpected error retrieving secret: {e}")
-        raise SecretsManagerError("Unexpected error occurred.") from e
+
+@patch("etl_pipeline.utils.secrets_manager.boto3.session.Session")
+def test_get_secret_invalid_json(mock_session, caplog):
+    mock_client = MagicMock()
+    mock_client.get_secret_value.return_value = {"SecretString": "not valid json"}
+    mock_session.return_value.client.return_value = mock_client
+
+    with caplog.at_level("ERROR"), pytest.raises(SecretsManagerError, match="Secret is not valid JSON"):
+        get_secret("project3c/secrets/invalidjson")
+
+    assert "Failed to parse secret JSON" in caplog.text
+
+
+@patch("etl_pipeline.utils.secrets_manager.boto3.session.Session")
+def test_get_secret_unexpected_exception(mock_session, caplog):
+    mock_client = MagicMock()
+    mock_client.get_secret_value.side_effect = Exception("Something went wrong")
+    mock_session.return_value.client.return_value = mock_client
+
+    with caplog.at_level("ERROR"), pytest.raises(SecretsManagerError, match="Unexpected error occurred"):
+        get_secret("project3c/secrets/broken")
+
+    assert "Unexpected error retrieving secret" in caplog.text
