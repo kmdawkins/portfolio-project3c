@@ -3,7 +3,6 @@ version: '1.0'
 config-version: 2
 
 profile: project3c_profile
-description: "Project 3C — Modular dbt setup targeting Snowflake"
 
 require-dbt-version: [">=1.10.0", "<2.0.0"]
 
@@ -13,7 +12,6 @@ clean-targets:
   - "dbt/target"
   - "dbt/dbt_modules"
 
-# Recommended: Set default materializations by layer
 models:
   project3c:
     raw:
