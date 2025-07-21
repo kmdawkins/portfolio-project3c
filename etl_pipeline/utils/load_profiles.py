@@ -1,10 +1,15 @@
 import os
 import yaml
-from etl_pipeline.utils.secrets_manager import get_secret
 from dotenv import load_dotenv
 from pathlib import Path
+from etl_pipeline.utils.secrets_manager import get_secret
 
 load_dotenv()
+
+# Force block-style YAML indentation compatible with dbt
+class IndentDumper(yaml.Dumper):
+    def increase_indent(self, flow=False, indentless=False):
+        return super().increase_indent(flow, False)
 
 def render_profiles():
     use_aws = os.getenv("USE_AWS_SECRETS", "false").lower() == "true"
@@ -24,7 +29,15 @@ def render_profiles():
             "schema": os.getenv("SNOWFLAKE_SCHEMA"),
         }
 
-    # 🟢 Updated profile name to match dbt_project.yml
+    # 🛑 Fail-safe: Check for missing values
+    missing_keys = [k for k, v in secret_dict.items() if not v]
+    if missing_keys:
+        raise ValueError(
+            f"❌ Missing required Snowflake credentials for: {', '.join(missing_keys)}.\n"
+            f"Check your .env file or AWS Secrets Manager configuration."
+        )
+
+    # ✅ Use the correct profile name from dbt_project.yml
     profiles = {
         "project3c_profile": {
             "outputs": {
@@ -49,7 +62,13 @@ def render_profiles():
     dbt_dir.mkdir(exist_ok=True)
 
     with open(dbt_dir / "profiles.yml", "w") as f:
-        yaml.dump(profiles, f, default_flow_style=False)
+        yaml.dump(
+            profiles,
+            f,
+            Dumper=IndentDumper,
+            default_flow_style=False,
+            sort_keys=False
+        )
 
     print("✅ profiles.yml successfully rendered.")
 
