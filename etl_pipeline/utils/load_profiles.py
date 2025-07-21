@@ -8,7 +8,7 @@ load_dotenv()
 
 def render_profiles():
     use_aws = os.getenv("USE_AWS_SECRETS", "false").lower() == "true"
-    
+
     if use_aws:
         print("🔐 Loading Snowflake credentials from AWS Secrets Manager...")
         secret_dict = get_secret("project3c/secrets/snowflake")
@@ -24,8 +24,9 @@ def render_profiles():
             "schema": os.getenv("SNOWFLAKE_SCHEMA"),
         }
 
+    # 🟢 Updated profile name to match dbt_project.yml
     profiles = {
-        "default": {
+        "project3c_profile": {
             "outputs": {
                 "dev": {
                     "type": "snowflake",
