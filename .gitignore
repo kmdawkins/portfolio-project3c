@@ -1,53 +1,62 @@
-# Byte-compiled / optimized / DLL files
+# ========================
+# Python Bytecode & Cache
+# ========================
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
+*.egg-info/
+.pytest_cache/
+.cache/
 
-# Virtual environments
+# ========================
+# Virtual Environments
+# ========================
 .venv/
 env/
 venv/
 ENV/
-*.egg-info/
-
-# Local virtual environments outside repo (e.g., C:\venvs)
 .venvs/
 venvs/
-dbt_snowflake/
 etl_env/
+dbt_snowflake/
 
-# Environment variables / secrets
+# ========================
+# Environment Variables & Secrets
+# ========================
 .env
 .env.*
 .envrc
 
-# IDE / Editor settings
+# ========================
+# IDE / Editor Settings
+# ========================
 .vscode/
 .idea/
 
-# OS files
+# ========================
+# OS-Specific Files
+# ========================
 .DS_Store
 Thumbs.db
 
-# Jupyter / notebook outputs
-*.ipynb_checkpoints
-
-# Pytest cache
-.pytest_cache/
-.cache/
-
-# Airflow logs and config files
-logs/
-airflow.db
-unittests.cfg
-airflow.cfg
-
-# Docker volumes & build cache
+# ========================
+# Docker
+# ========================
 .docker/
 docker-compose.override.yml
 
-# dbt artifacts & user profiles
+# ========================
+# Airflow
+# ========================
+logs/
+airflow.db
+airflow.cfg
+unittests.cfg
+
+# ========================
+# dbt
+# ========================
 dbt/target/
 dbt/dbt_modules/
 dbt/logs/
@@ -55,34 +64,38 @@ dbt/.dbt/
 dbt/manifest.json
 dbt/run_results.json
 
-# Snowflake local credential files (if any)
+# ========================
+# Snowflake & SnowSQL
+# ========================
 *.p12
 *.pem
 *.key
-
-# SnowSQL CLI config and session files
 .snowsql/
 
-# CLI log output
+# ========================
+# CLI Logs & History
+# ========================
 *.log
-
-# Shell/CLI history files (if manually saved)
 *.history
 
-# Dataset files (if generated locally)
+# ========================
+# Dataset Files (e.g., Staging, Raw)
+# ========================
 include/**/*.csv
 include/**/*.parquet
 include/**/*.json
 
-# 👉 Exclude large CSV file from Git tracking (pmo)
+# Exclude large raw source file (PMO data)
 include/raw/pmo.csv
 
-# Sandbox experiments
-sandbox/
-
-# Project-specific markdown / notes
+# ========================
+# Documentation & Notes
+# ========================
 developer_notes.md
-
-# Diagram exports (optional if files are >5MB)
 diagrams/**/*.png
 diagrams/**/*.gif
+
+# ========================
+# Experimental / Local Testing
+# ========================
+sandbox/
