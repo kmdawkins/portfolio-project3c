@@ -55,9 +55,10 @@ airflow.cfg
 unittests.cfg
 
 # ========================
-# dbt
+# dbt Output & Artifacts
 # ========================
-dbt/target/
+target/                      # dbt build artifacts (always created at project root)
+dbt/target/                  # dbt subdirectory (if used)
 dbt/dbt_modules/
 dbt/logs/
 dbt/.dbt/
