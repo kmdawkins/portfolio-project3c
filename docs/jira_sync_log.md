@@ -121,6 +121,7 @@ See full chronological log below ⬇️
 | 2025-07-19  | P3C-115 | Unit test AWS secrets_manager.py retrieval utility | 🔄 Refactored ticket to include logger dependency fix, creation of `log_config.py`, and validation of logging behavior via `caplog`; scope now fully covers exception handling, mocking, and log verification | 🟨 In Progress |
 | 2025-07-20  | P3C-67  | Create Python utility to retrieve secrets programmatically | ✅ Finalized `secrets_manager.py` utility with robust AWS retrieval logic, custom exception handling, structured log output, and support for JSON-formatted secrets. Verified reusability across dbt, Airflow, and CLI workflows. | ✅ Done |
 | 2025-07-20  | P3C-115 | Unit test AWS secrets_manager.py retrieval utility | ✅ Completed full test coverage for `get_secret()` function, including happy path, missing credentials, `ClientError`, malformed JSON, and unexpected failure scenarios. Validated logging output using `caplog` and isolated external dependencies with `pytest-mock`. | ✅ Done |
+| 2025-07-22 | P3C-68 | Refactor dbt `profiles.yml` to use AWS Secrets Manager | ✅ `load_profiles.py` now securely injects secrets via `get_secret()` from `project3c/secrets/snowflake`. Fallback to `.env` verified. `dbt debug` and `dbt run` succeeded with redacted CLI output. Screenshots captured. | ✅ Done |
 
 
 
