@@ -57,8 +57,9 @@ unittests.cfg
 # ========================
 # dbt Output & Artifacts
 # ========================
-target/                      # dbt build artifacts (always created at project root)
-dbt/target/                  # dbt subdirectory (if used)
+target/*                      # Ignore all dbt artifacts in project root
+!target/.gitkeep              # Allow folder to remain in repo for structure
+dbt/target/                   # dbt subdirectory (if used)
 dbt/dbt_modules/
 dbt/logs/
 dbt/.dbt/
