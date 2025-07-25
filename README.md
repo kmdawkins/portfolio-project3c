@@ -81,14 +81,20 @@ Project documentation and visual outputs are stored in:
 
 ## 🏁 Jira Epic Color Mapping
 
-| Stage            | Color    | Description                                     | Epics                                  |
-|------------------|----------|-------------------------------------------------|----------------------------------------|
-| **Setup**        | 🟨 Yellow | Git, scaffolding, secrets, Docker               | `P3C-1`, `P3C-2`, `P3C-36`, `P3C-7`, `P3C-65` |
-| **Ingestion**    | 🟥 Red    | Data sourcing via S3, ingestion into Snowflake  | `P3C-56`                               |
-| **Orchestration**| 🟧 Orange | DAG creation and Airflow task flow              | `P3C-6`                                |
-| **Modeling**     | 🟩 Green  | dbt model logic and transformations             | `P3C-3`, `P3C-4`                        |
-| **Testing**      | 🟦 Blue   | dbt tests and validation                        | `P3C-5`                                |
-| **Final Review** | 🟪 Purple | Documentation, polish, GitHub release           | `P3C-8`                                |
+| Stage                        | Color          | Description                                      | Epics or Subtasks                         |
+|------------------------------|----------------|--------------------------------------------------|-------------------------------------------|
+|**Infrastructure Setup**      | 🟨 Yellow      | Git, scaffolding, secrets, Docker environment    | `P3C-1`, `P3C-2`, `P3C-36`, `P3C-7`       |
+|**Ingestion**                 | 🟥 Red         | Data sourcing via S3, ingestion into Snowflake   | `P3C-56`                                  |
+|**Orchestration**             | 🟧 Orange      | DAG creation and Airflow task flow               | `P3C-6`                                   |
+|**Modeling**                  | 🟩 Green       | dbt model logic and transformation               | `P3C-3`, `P3C-4`                          |
+|**Data Testing & Validation** | 🟦 Blue        | dbt tests and Python-based validation            | `P3C-5`                                   |
+|**Monitoring**                | ⬜ Gray        | Logging, retry logic, observability via Airflow  | `P3C-65: P3C-115, P3C-69, P3C-70, P3C-71` |
+|**Final Review**              | 🟪 Purple      | Documentation, portfolio polish, GitHub release  | `P3C-8`                                   |
+
+### 📌Legend
+🟨 Foundation 🟥 Source Ingestion 🟧 Task Flow 🟩 Transformation 🟦 Validation ⬜ Monitoring 🟪 Final Polish
+
+
 
 ---
 
@@ -111,15 +117,17 @@ This project uses a structured label system across all Jira tasks to support tra
 
 ### 🧰 Portfolio-Grade Labels
 
-| Label        | Description                                                           |
-| ------------ | --------------------------------------------------------------------- |
-| `portfolio`  | Deliverables for job-seeking: visuals, docs, final polish             |
-| `docs`       | Internal documentation, visuals, developer notes                      |
-| `testing`    | dbt tests, Python unit tests, CLI or mocking validation               |
-| `unit-test`  | Unit test coverage for Python modules                                 |
-| `mocking`    | Simulated input/output logic for testing (e.g., mocking boto3 calls)  |
-| `logging`    | Logging enhancements, retry strategies, observability instrumentation |
-| `refinement` | Jira grooming: epic clarity, subtask decomposition                    |
+| Label        | Description                                                            |
+| ------------ | ---------------------------------------------------------------------- |
+| `portfolio`  | Deliverables for job-seeking: visuals, docs, final polish              |
+| `docs`       | Internal documentation, visuals, developer notes                       |
+| `testing`    | dbt tests, Python unit tests, CLI or mocking validation                |
+| `unit-test`  | Unit test coverage for Python modules                                  |
+| `mocking`    | Simulated input/output logic for testing (e.g., mocking boto3 calls)   |
+| `logging`    | Logging enhancements, retry strategies, observability instrumentation  |
+| `monitoring` | Monitoring pipeline health, failure visibility, fallback observability |
+| `refinement` | Jira grooming: epic clarity, subtask decomposition                     |
+
 
 
 ---
@@ -167,6 +175,7 @@ This project uses a structured label system across all Jira tasks to support tra
 | `logging`          | Logging enhancements, retry strategies, observability instrumentation    |
 | `mocking`          | Simulated input/output logic for testing (e.g., mocking boto3 calls)     |
 | `modeling`         | dbt model creation and transformation layers                             |
+| `monitoring`       | Monitoring pipeline health, failure visibility, fallback observability   |
 | `portfolio`        | Deliverables for job-seeking: visuals, docs, final polish                |
 | `python`           | Custom ETL modules, validation logic, file ingestion                     |
 | `pytest`           | pytest configuration and execution                                       |
@@ -183,6 +192,7 @@ This project uses a structured label system across all Jira tasks to support tra
 | `transformation`   | Column renaming, normalization, NULL handling                            |
 | `unit-test`        | Unit test coverage for Python modules                                    |
 | `validation`       | Schema checks, row validation, quality assurance                         |
+
 
 
 ---
