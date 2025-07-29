@@ -1,0 +1,4 @@
+-- create_stg_pmo.sql
+-- Purpose: Defines the Snowflake DDL for the PMO staging table
+-- Created: 2025-07-29
+-- Status: Scaffolded (DDL to be added)
