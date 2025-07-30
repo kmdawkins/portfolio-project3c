@@ -6,27 +6,26 @@ Used to record major changes in ticket such as: status updates (blocked), scope,
 ---
 
 ## 🔎 Latest Activity  
-🗓️ 2025-07-13  
+🗓️ 2025-07-30  
 
 ### Development  
-- ✅ **P3C-104**: AWS account and IAM user for programmatic access successfully created
-- ✅ **P3C-105**: AWS CLI installed and verified locally
-- ✅ Named profile `project3c` securely configured using `~/.aws/credentials` and `~/.aws/config`
-- ✅ Verified identity using `aws sts get-caller-identity`
+- ✅ **P3C-117**: Installed PostgreSQL CLI (`psql`) via Chocolatey and verified PATH configuration  
+- ✅ **P3C-116**: Created `launch_psql.py` to securely launch interactive `psql` session using credentials retrieved from AWS Secrets Manager  
+- ✅ Secrets pulled using `get_secret()` and safely injected into subprocess environment variables  
+- ✅ Logging enhancements added with secret masking, dry-run safety, and region override fallback  
 
 ### Documentation  
-- ✅ Updated `README.md` under **Secrets Management** to reflect safest approach for configuring AWS CLI
-- ✅ Logged changes for **P3C-104** and **P3C-105** in `jira_sync_log.md`
-- ✅ Descriptions and AC updated for P3C-105 to reinfoce secure secrets handling
+- ✅ Updated `jira_sync_log.md` with entries for P3C-116 and P3C-117  
+- ✅ Added new screenshots documenting successful and dry-run `psql` CLI launches  
+- ✅ Updated `.vscode/settings.json` to enforce interpreter path and autocompletion in `etl_pipeline/`  
 
 ### Visual Assets  
-- ✅ Screenshot added: `2025-07-13-aws-cli-installed-success.png`  
-- ✅ Screenshot added: `2025-07-13-aws-cli-not-recognized-powershell-error.png`
-- ✅ Screenshot added: `2025-07-13-aws-config-sts-verification-project3c.png`
+- ✅ Screenshot added: `2025-07-30-psql-cli-launch-psql-success.png`  
+- ✅ Screenshot added: `2025-07-30-psql-cli-launch-psql-dry-run-with-logging.png`  
 
 ### Jira Updates  
-- ✅ **P3C-104** marked `Done`: AWS account + IAM user setup complete
-- ✅ **P3C-105** marked `Done`: AWS CLI installed, verified, and securely configured
+- ✅ **P3C-117** marked `Done`: PostgreSQL CLI installed and verified  
+- ✅ **P3C-116** marked `Done`: CLI utility securely launches `psql` using secrets from AWS Secrets Manager
 
 
 
@@ -122,6 +121,8 @@ See full chronological log below ⬇️
 | 2025-07-20  | P3C-67  | Create Python utility to retrieve secrets programmatically | ✅ Finalized `secrets_manager.py` utility with robust AWS retrieval logic, custom exception handling, structured log output, and support for JSON-formatted secrets. Verified reusability across dbt, Airflow, and CLI workflows. | ✅ Done |
 | 2025-07-20  | P3C-115 | Unit test AWS secrets_manager.py retrieval utility | ✅ Completed full test coverage for `get_secret()` function, including happy path, missing credentials, `ClientError`, malformed JSON, and unexpected failure scenarios. Validated logging output using `caplog` and isolated external dependencies with `pytest-mock`. | ✅ Done |
 | 2025-07-22 | P3C-68 | Refactor dbt `profiles.yml` to use AWS Secrets Manager | ✅ `load_profiles.py` now securely injects secrets via `get_secret()` from `project3c/secrets/snowflake`. Fallback to `.env` verified. `dbt debug` and `dbt run` succeeded with redacted CLI output. Screenshots captured. | ✅ Done |
+| 2025-07-30 | P3C-117 | Install PostgreSQL CLI (psql) and configure system PATH | ✅ Installed `psql` locally and confirmed PATH configuration. Verified version and login access using the AWS Secrets-integrated CLI. | ✅ Done |
+| 2025-07-30 | P3C-116 | Create CLI script to securely launch psql session via AWS Secrets Manager | ✅ Created `launch_psql.py` to retrieve PostgreSQL credentials from AWS Secrets Manager and launch `psql` securely. Dry-run and live login screenshots captured. Logging confirms environment safety. | ✅ Done |
 
 
 
