@@ -9,15 +9,21 @@ def launch_psql(secret_name: str, region: str = "us-west-2") -> None:
         logger.info("Retrieving PostgreSQL credentials from AWS Secrets Manager...")
         creds = get_secret(secret_name, region)
 
+        if not creds:
+            logger.error("❌ Retrieved secret is empty or None.")
+            raise SecretsManagerError("Retrieved secret is empty or None.")
+
         db_user = creds["POSTGRES_USER"]
         db_pass = creds["POSTGRES_PASSWORD"]
         db_host = creds["POSTGRES_HOST"]
         db_port = creds.get("POSTGRES_PORT", "5432")
         db_name = creds["POSTGRES_DB"]
 
+        logger.debug(f"✅ Parsed credentials: USER={db_user}, HOST={db_host}, PORT={db_port}, DB={db_name}")
+
         logger.info("Launching psql CLI session...")
         env = os.environ.copy()
-        env["PGPASSWORD"] = db_pass  # Avoid exposing password in command args
+        env["PGPASSWORD"] = db_pass  # Password kept out of CLI args for security
 
         cmd = [
             "psql",
@@ -30,13 +36,13 @@ def launch_psql(secret_name: str, region: str = "us-west-2") -> None:
         subprocess.run(cmd, env=env, check=True)
 
     except KeyError as e:
-        logger.error(f"Missing expected key in secret: {e}")
+        logger.error(f"❌ Missing expected key in secret: {e}")
     except SecretsManagerError as e:
-        logger.error(f"Secrets retrieval failed: {e}")
+        logger.error(f"❌ Secrets retrieval failed: {e}")
     except subprocess.CalledProcessError as e:
-        logger.error(f"psql command failed: {e}")
+        logger.error(f"❌ psql command failed: {e}")
 
 
 if __name__ == "__main__":
-    # Example usage: update to match your secret name
-    launch_psql("project3c/secrets/postgresql")
+    # Finalized secret name confirmed
+    launch_psql("project3c/secrets/postgres")
